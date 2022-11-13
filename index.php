@@ -42,8 +42,8 @@ require('./Settings/core.php');
         </form>
         
         
-            <a class='nav-link active' href='./View/all_product.php'>All Products</a>
-            <a class='nav-link active' href='./View/cart.php'>Cart</a>
+            <a class='nav-link active' href='./View/all_universities.php'>All Universities</a>
+            <a class='nav-link active' href='./View/cart.php'>Applications</a>
             <a class='nav-link active' href='./Login/login.php'>Login</a>
             <a class='nav-link active' href='./Login/register.html'>Sign up</a>
 
