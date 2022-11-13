@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Register</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Karla:400,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../CSS/register.css" />
+  </head>
+  <body>
+    <main>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-6 login-section-wrapper">
+            <div class="brand-wrapper">
+              <img src="../Images/logo.svg" alt="logo" class="logo" />
+            </div>
+
+            <div class="login-wrapper my-auto">
+              <h1 class="login-title">Sign up</h1>
+
+              <form method="post" action="./registerprocess.php" id="form">
+                <div class="error" id="error"></div>
+
+                <div class="form-group">
+                  <label for="name">Fullname</label>
+                  <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    class="form-control"
+                    placeholder="James Maddison"
+                  />
+                  <div id="name_error" class="val_error"></div>
+                </div>
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    class="form-control"
+                    placeholder="email@example.com"
+                  />
+                  <div id="email_error" class="val_error"></div>
+                </div>
+                <div class="form-group mb-4">
+                  <label for="password">Password</label>
+                  <input
+                    type="password"
+                    name="password"
+                    id="password"
+                    class="form-control"
+                    placeholder="enter your passsword"
+                  />
+                  <div id="password_error" class="val_error"></div>
+                </div>
+                <div class="form-group">
+                  <label for="country">Country</label>
+                  <input
+                    type="text"
+                    name="country"
+                    id="country"
+                    class="form-control"
+                    placeholder="Ghana"
+                  />
+                  <div id="country_error" class="val_error"></div>
+                </div>
+                <div class="form-group">
+                  <label for="city">City</label>
+                  <input
+                    type="city"
+                    name="city"
+                    id="city"
+                    class="form-control"
+                    placeholder="Accra"
+                  />
+                  <div id="city_error" class="val_error"></div>
+                </div>
+                <div class="form-group">
+                  <label for="contact">Contact</label>
+                  <input
+                    type="number"
+                    name="contact"
+                    id="contact"
+                    class="form-control"
+                    placeholder="0592234913"
+                  />
+                  <div id="contact_error" class="val_error"></div>
+                </div>
+                <div class="form-group">
+                  <label for="user-role">User role</label>
+                  <input
+                    type="tel"
+                    name="user-role"
+                    id="contact"
+                    class="form-control"
+                    placeholder="0592234913"
+                    value="2"
+                    readonly="readonly"
+                  />
+                </div>
+                <button
+                  name="addButton"
+                  id="login"
+                  class="btn btn-block login-btn"
+                  type="submit"
+                  value="Login"
+                  onclick="return sub()"
+                >
+                  Sign up
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <div class="col-sm-6 px-0 d-none d-sm-block">
+            <img
+              src="../Images/login.jpg"
+              alt="login image"
+              class="login-img"
+            />
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="../Js/main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  </body>
+</html>
