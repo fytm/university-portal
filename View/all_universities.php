@@ -1,7 +1,7 @@
 <?php
 require('../Controllers/university_controller.php');
 
-$product = list_universities_controller();
+$university = list_universities_controller();
 ?>
 
 <!DOCTYPE html>
@@ -53,50 +53,10 @@ $product = list_universities_controller();
         <?php } ?>
  <div class='products'>
     <?php
-        foreach($product as $x){
-            echo "
-            
-
-                <div class='product'>
-                    // <div class='product__background'>
-                    //     <img src='{$x['product_image']}' alt='Book 01' class='product__image' style='width:50%; margin-left: 25%'>
-                    // </div>
-                    <div class='product__info'>
-                        <div class='product__detail'>
-                            <h3 class='product__title'>{$x['university_name']}</h3>
-                            <a href='#'>
-                            <div class='product__icon product__like'>
-                                <i class='fas fa-heart fa-2x'></i>
-                                </div>
-                            </a>
-                        </div>
-                        
-                        <h1 class='product__price'>GHC {$x['product_price']}</h1>
-                        <div class='product__second'>
-                            <p class='product__paragraph' >{$x['university description']}</p>
-
-                        </div>
-                    </div>
-
-                    <div style='display:flex; width:100%;'>
-                        <a href='./single_product.php?id={$x['product_id']}' style='width:100%;'>
-                            <div class='product__icon-2 product__arrow' style='width:150%; margin-left:2px; margin-top:20px'>
-                            <h4>View University</h4>
-                            </div>
-                        </a>
-
-                        <form method='post' action='../Action/add_to_cart.php'>
-                            <input name='id' style='display:none' type='text' class='form-control' id='exampleInputEmail1'  value={$x['product_id']}>
-
-                            <button type='submit' name='addtocart' class='btn btn-primary'> Add to Shortlist </button>
-                        
-                        
-                        </form>
-                        
-                    </div>
-                </div>
-            ";
-
+        foreach($university as $x){
+            //echo "$x['university_id']  	 	$x['university_name'] 	$x['university_email'] $x['university_description'] 	$x['university_country']    ";
+            // var_dump($x);
+            echo"${x['university_name']}";
         }
 
     ?>
