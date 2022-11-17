@@ -67,22 +67,6 @@ $university = list_universities_controller();
 
 
 
-     <!-- Footer Section -->
-    <section class="footer">
-        <h2 class="products__section-title">Afrika Konnect</h2>
-        <ul class="nav">
-            <li class="nav__item"><a href="#" class="nav__link">Home</a></li>
-            <li class="nav__item"><a href="#" class="nav__link">Universities</a></li>
-            <li class="nav__item"><a href="#" class="nav__link">Applications</a></li>
-            <li class="nav__item"><a href="#" class="nav__link">About Us</a></li>
-            <li class="nav__item"><a href="#" class="nav__link">Contact Us</a></li>
-        </ul>
-
-        <p class="copyright">
-            Afrika Konnect 2022
-        </p>
-    </section>
-
     
 
     
