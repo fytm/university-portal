@@ -1,6 +1,6 @@
 <?php
 
-require('../Settings/connection.php');
+require('./Settings/connection.php');
 
 // inherit the methods from Connection
 class University extends Connection{
@@ -11,9 +11,9 @@ class University extends Connection{
 		return $this->query("insert into university(university_name, university_email, university_description, university_country, university_city, university_contact) values('$name', '$email', '$description', '$country', '$city','$contact')");
 	}
 
-    function select_all_universities(){
+    function select_all_universities_plus_logos(){
 		// return array or false
-		return $this->fetch("select * from university");
+		return $this->fetch("SELECT * FROM university inner join `uni_photos` WHERE uni_id = university_id and isLogo = 1");
 	} 
 
     function list_universities(){

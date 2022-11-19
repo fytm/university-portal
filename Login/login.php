@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
 
-    <link rel="stylesheet" href="../CSS/login.css">
+    <link rel="stylesheet" href="../assets/css/login.css">
 
     <link href="https://fonts.googleapis.com/css?family=Karla:400,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css">
@@ -24,13 +24,13 @@
       <div class="card login-card">
         <div class="row no-gutters">
           <div class="col-md-5">
-            <img src="../Images/login.jpg" alt="login" class="login-card-img">
+            <img src="../assets/img/login.jpg" alt="login" class="login-card-img">
           </div>
 
           <div class="col-md-7">
             <div class="card-body">
               <div class="brand-wrapper">
-                <img src="../Images/logo.svg" alt="logo" class="logo">
+                <img src="../assets/img/favicon.png" alt="logo" class="logo">
               </div>
               <p class="login-card-description">Sign into your account</p>
 

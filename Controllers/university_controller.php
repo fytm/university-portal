@@ -1,6 +1,6 @@
 <?php
 
-require('../Classes/university_class.php');
+require('./Classes/university_class.php');
 
 function add_university_controller($name,$email,$description,$country,$city,$contact){
     $university_instance = new University();
@@ -24,6 +24,11 @@ function update_university_controller($name,$email,$description,$country,$city,$
     $university_instance = new University();
     // call the method from the class
     return $university_instance->update_university($name,$email,$description,$country,$city,$contact, $id);
+}
+
+function select_with_logo(){
+    $university_instance = new University();
+    return $university_instance -> select_all_universities_plus_logos();
 }
 
 // function list_selected_products_controller($query){

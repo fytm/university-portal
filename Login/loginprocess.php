@@ -21,7 +21,7 @@ require('../Settings/core.php');
         $_SESSION['user_role'] = $results['user_role'];
         $_SESSION['user_id'] = $results['customer_id'];
 
-        header("Location: ../index.php");
+        header("Location: ../universities.php");
     }else{
         
         header("Location: ../Login/login.php?error=Incorrect username or password"); 
