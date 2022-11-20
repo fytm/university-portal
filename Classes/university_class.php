@@ -30,6 +30,16 @@ class University extends Connection{
 		return $this->query("update university set university_name = '$name',university_email = '$email', university_description = '$description', university_country = '$country', university_city = '$city', university_contact = '$contact' where product_id = '$id' ");
 	}
 
+	function select_photos($id){
+		//Select first four photos for school only
+		return $this->fetch("SELECT `path` FROM `uni_photos` WHERE uni_id = '$id' AND isLogo = false LIMIT 4 ");
+
+	}
+
+	//  function select_one_university_and_photos($id){
+	// 	return $this->fetch("select * from university inner join uni_photos on uni_id = university_id where uni_id='$id'  AND isLogo = false LIMIT 4");
+	// }
+
 }
 
 ?>

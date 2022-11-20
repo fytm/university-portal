@@ -1,6 +1,6 @@
 <?php require "./Controllers/university_controller.php";
 $university = select_one_university_controller($_GET['id']);
-$path = select_university_photos_controller($_GET['id']);
+$photos = select_university_photos_controller($_GET['id'])
 ?>
 
 <!DOCTYPE html>
@@ -10,7 +10,7 @@ $path = select_university_photos_controller($_GET['id']);
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>University Details - Afrika Konnect</title>
+    <title>Afrika Konnect</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -47,8 +47,9 @@ $path = select_university_photos_controller($_GET['id']);
 <body class="page-portfolio">
 
     <!-- ======= Header ======= -->
-    <?php include "header.php"; ?>
-    <!-- End Header -->
+    <?php include "header.php";
+?>
+
 
     <main id="main">
 
@@ -57,75 +58,64 @@ $path = select_university_photos_controller($_GET['id']);
             style="background-image: url('assets/img/portfolio-header.jpg');">
             <div class="container position-relative d-flex flex-column align-items-center">
 
-                <?php if (isset($_GET['id'])) {
-              echo "<h2>University Details</h2>";
-             }
-            ?>
-                <!-- <h2>University Details</h2> -->
+                <h2>University Details</h2>
                 <ol>
                     <li><a href="index.html">Home</a></li>
                     <li>University Details</li>
                 </ol>
-
             </div>
-        </div><!-- End Breadcrumbs -->
+        </div>
+        <!-- End Breadcrumbs -->
 
         <!-- ======= Portfolio Details Section ======= -->
         <section id="portfolio-details" class="portfolio-details">
             <div class="container" data-aos="fade-up">
-
                 <div class="row gy-4">
-
                     <div class="col-lg-8">
                         <div class="slides-1 portfolio-details-slider swiper">
                             <div class="swiper-wrapper align-items-center">
-                                <?php if (isset($_GET['id'])) { 
-                                   foreach ($path as $p) {
-                                      echo" 
-                                        <div class='swiper-slide'>
-                                          <img src='{$p['path']}' alt='Photo'>
-                                        </div>";                              
-                                      }  
-                                    } 
-                                ?>
-
-
-
-
-
+                                <?php foreach($photos as $p){
+                                  echo"<div class='swiper-slide'>
+                                    <img src='{$p['path']}' alt='' />
+                                  </div>";
+                                }?>
                             </div>
                             <div class="swiper-pagination"></div>
                         </div>
                     </div>
 
-                    <div class="col-lg-4">
-                        <?php echo"<div class='portfolio-info'>
-                            <h3>University information</h3>
-                            <ul>
-                                <li><strong>Country</strong>: {$university['university_country']}</li>
-                                <li><strong>City</strong>: {$university['university_city']}</li>
-                                <li><strong>Email</strong>: <a href=mailto:'{$university['university_email']}'>{$university['university_email']}</a></li>
-                                <li><strong>Phone</strong>: <a href = tel:'+{$university['university_contact']}'>+{$university['university_contact']} </a></li>
-                                
 
+                    <div class="col-lg-4">
+                        <div class="portfolio-info">
+                            <h3>Project information</h3>
+                            <ul>
+                                <li><strong>Category</strong>: Web design</li>
+                                <li><strong>Client</strong>: ASU Company</li>
+                                <li><strong>Project date</strong>: 01 March, 2020</li>
+                                <li>
+                                    <strong>Project URL</strong>:
+                                    <a href="#">www.example.com</a>
+                                </li>
                             </ul>
                         </div>
-                        <div class='portfolio-description'>
-                            <h2>University Description</h2>
+                        <div class="portfolio-description">
+                            <h2>This is an example of portfolio detail</h2>
                             <p>
-                                {$university['university_description']}
+                                Autem ipsum nam porro corporis rerum. Quis eos dolorem eos
+                                itaque inventore commodi labore quia quia. Exercitationem
+                                repudiandae officiis neque suscipit non officia eaque itaque
+                                enim. Voluptatem officia accusantium nesciunt est omnis
+                                tempora consectetur dignissimos. Sequi nulla at esse enim cum
+                                deserunt eius.
                             </p>
-                        </div>"; ?>
-
-
+                        </div>
                     </div>
-
                 </div>
-
             </div>
-        </section><!-- End Portfolio Details Section -->
-
-    </main><!-- End #main -->
+        </section>
+        <!-- End Portfolio Details Section -->
+    </main>
+    <!-- End #main -->
 
     <!-- ======= Footer ======= -->
     <?php include "footer.php"?>

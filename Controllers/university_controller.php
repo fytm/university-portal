@@ -26,11 +26,15 @@ function update_university_controller($name,$email,$description,$country,$city,$
     return $university_instance->update_university($name,$email,$description,$country,$city,$contact, $id);
 }
 
-function select_with_logo(){
+function select_with_logo_controller(){
     $university_instance = new University();
     return $university_instance -> select_all_universities_plus_logos();
 }
 
+function select_university_photos_controller($id){
+    $university_instance = new University();
+    return $university_instance -> select_photos($id);
+}
 // function list_selected_products_controller($query){
 //     $product_instance = new Product();
 //     // call the method from the class
