@@ -17,3 +17,10 @@ function add_to_application_controller($uni_id,$ip_address,$cust_id,$price){
     return $application_instance->add_to_application($cust_id,$uni_id, $ip_address,$price);
     
 }
+
+function add_to_application_without_customer_id_controller($uni_id,$ip_address,$price){
+    $application_instance = new Application();
+    return $application_instance->add_to_application_without_customer_id($uni_id,$ip_address,$price);
+}
+
+?>

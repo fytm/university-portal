@@ -17,13 +17,25 @@ if(isset($_GET['id'])){
         //check if user has already applied
         // if(isset($check)){
             // if(($check['uni_id'] == $id) && ($check['cust_id'] == $customerid)){
-            if($check['uni_id'] == $id ){     
+            if($check['uni_id'] == $uni_id ){     
                 header("Location: ./university-details.php?id=$uni_id&error=Item already in Added to cart");    
             }else{
-                $result = add_to_application_controller($id,$ip_address,$cust_id,$price);
+                $result = add_to_application_controller($uni_id,$ip_address,$customerid,$price);
+                header("Location: ./university-details.php?id=$uni_id&message=Item added successfully");    
+
 
             }
     //}
+    }else{
+        if($check['uni_id'] == $uni_id ){     
+                header("Location: ./university-details.php?id=$uni_id&error=Item already in Added to cart");    
+            }else{
+                $result = add_to_application_without_customer_id_controller($uni_id,$ip_address,$price);
+                header("Location: ./university-details.php?id=$uni_id&message=Item added successfully");    
+
+                
+
+            }
     }
 
 }
