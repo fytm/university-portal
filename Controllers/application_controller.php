@@ -17,9 +17,9 @@ function select_all_applications_controller($cust_id, $ip_address){
     return $application_instance->select_all_applications($cust_id, $ip_address);
 }
 
-function select_all_applications_without_ip_controller($ip_address){
+function select_all_applications_without_customer_id_controller($ip_address){
     $application_instance = new Application();
-    return $application_instance->select_all_applications_with_ip($ip_address);
+    return $application_instance->select_all_applications_without_customer_id($ip_address);
 }
 
 function add_to_application_controller($uni_id,$ip_address,$cust_id,$price){

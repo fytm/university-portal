@@ -32,12 +32,8 @@ if(isset($_GET['id'])){
             }else{
                 $result = add_to_application_without_customer_id_controller($uni_id,$ip_address,$price);
                 header("Location: ./university-details.php?id=$uni_id&message=Item added successfully");    
-
-                
-
             }
     }
-
 }
 
 
