@@ -6,10 +6,14 @@ require('./Settings/connection.php');
 class Application extends Connection{
 
     function select_single_application($uni_id, $cust_id){
-        return $this ->fetchOne("select * from application where uni_id = $uni_id and cust_id =$cust_id");
+        return $this ->fetchOne("select * from application where uni_id = '$uni_id' and cust_id ='$cust_id'");
     }
-    function select_all_applications($cust_id){
-        return $this ->fetchOne("select * from application where cust_id =$cust_id");
+    function select_all_applications($cust_id, $ip){
+        return $this ->fetchOne("select * from application where cust_id ='$cust_id' or ip_add = '$ip'");
+    }
+
+    function select_all_applications_with_ip($ip){
+        return $this ->fetchOne("select * from application where ip_add ='$ip'");
     }
     function add_to_application($cust_id,$id, $ip_address,$price){
         return $this ->query("insert into application(cust_id, uni_id,	ip_add,	price) values('$cust_id', '$id', '$ip_address', '$price') ");

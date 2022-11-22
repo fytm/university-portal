@@ -12,9 +12,14 @@ function select_single_application_item_controller($uni_id,$cust_id){
 
 }
 
-function select_all_applications_controller($cust_id){
+function select_all_applications_controller($cust_id, $ip_address){
     $application_instance = new Application();
-    return $application_instance->select_single_application($cust_id);
+    return $application_instance->select_all_applications($cust_id, $ip_address);
+}
+
+function select_all_applications_without_ip_controller($ip_address){
+    $application_instance = new Application();
+    return $application_instance->select_all_applications_with_ip($ip_address);
 }
 
 function add_to_application_controller($uni_id,$ip_address,$cust_id,$price){
