@@ -2,6 +2,23 @@
 require("./Controllers/application_controller.php");
 ?>
 
+<?php
+$ip_address = getenv("REMOTE_ADDR");
+// echo "$ip_address";
+    if(isset($_SESSION['user_role'])){
+        $customerid = $_SESSION['user_id'];
+        // echo "$customer_id";
+        $applications_list = select_all_applications_controller($customer_id, $ip_address);
+        // echo "$applications_list";
+        // contains app_id, cust_id, uni_id, ip_add, price, total
+
+    }else{
+        $applications_list = select_all_applications_without_customer_id_controller($ip_address); 
+        // echo "$ip_address";
+
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,9 +37,9 @@ require("./Controllers/application_controller.php");
         <thead>
             <tr>
                 <th style="width: 50%">University</th>
-                <th style="width: 18%">Application Fee</th>
-                <!-- <th style="width: 8%">Quantity</th> -->
-                <th style="width: 22%" class="text-center">Subtotal</th>
+                <th style="width: 18%">Country</th>
+                <th style="width: 18%">City</th>
+                <th style="width: 22%" class="text-center">Application Fee</th>
                 <th style="width: 10%"></th>
             </tr>
         </thead>
@@ -32,49 +49,53 @@ require("./Controllers/application_controller.php");
         ?>
         <tbody>
             <tr>
-                <td data-th="Product">
-                    <div class="row">
-                        <div class="col-sm-2 hidden-xs">
-                            <img src="http://placehold.it/100x100" alt="..." class="img-responsive" />
+                <?php foreach($applications_list as $x){
+                    echo "<td data-th='University'>
+                    <div class='row'>
+                        <div class='col-sm-2 hidden-xs'>
+                            <img src='http://placehold.it/100x100' alt='...' class='img-responsive' />
                         </div>
-                        <div class="col-sm-10">
-                            <h4 class="nomargin">Product 1</h4>
+                        <div class='col-sm-10'>
+                            <h4 class='nomargin'>{$x['university_name']}</h4>
                             <p>
-                                Quis aute iure reprehenderit in voluptate velit esse cillum
-                                dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet.
+                                {$x['mission']}
                             </p>
                         </div>
                     </div>
                 </td>
-                <td data-th="Price">$1.99</td>
-                <!-- <td data-th="Quantity">
-                    <input type="number" class="form-control text-center" value="1" />
-                </td> -->
-                <td data-th="Subtotal" class="text-center">1.99</td>
-                <td class="actions" data-th="">
-                    <button class="btn btn-info btn-sm">
-                        <i class="fa fa-refresh"></i>
+                <td data-th='Country'>{$x['university_country']}</td>
+                <td data-th='City'>{$x['university_city']}</td>
+                <td data-th='Fee' class='text-center'>GH₵{$x['price']}</td>
+                <td class='actions' data-th=''>
+                    <button class='btn btn-info btn-sm'>
+                        <i class='fa fa-refresh'></i>
                     </button>
-                    <button class="btn btn-danger btn-sm">
-                        <i class="fa fa-trash-o"></i>
+                    <button class='btn btn-danger btn-sm'>
+                        <i class='fa fa-trash-o'></i>
                     </button>
-                </td>
+                </td>";                    
+                } ?> 
+            
             </tr>
         </tbody>
         <tfoot>
-            <tr class="visible-xs">
-                <td class="text-center"><strong>Total 1.99</strong></td>
+                <?php foreach($applications_list as $x){
+                    echo " <tr class='visible-xs'>
+                <td class='text-center'><strong>Total: GH₵{$x['total']}</strong></td>
             </tr>
             <tr>
                 <td>
-                    <a href="#" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a>
+                    <a href='#' class='btn btn-warning'><i class='fa fa-angle-left'></i> Continue Shopping</a>
                 </td>
-                <td colspan="2" class="hidden-xs"></td>
-                <td class="hidden-xs text-center"><strong>Total $1.99</strong></td>
+                <td colspan='2' class='hidden-xs'></td>
+                <td class='hidden-xs text-center'><strong>Total: GH₵{$x['total']}</strong></td>
                 <td>
-                    <a href="#" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a>
+                    <a href='#' class='btn btn-success btn-block'>Checkout <i class='fa fa-angle-right'></i></a>
                 </td>
-            </tr>
+            </tr>";
+           
+
+                }?>
         </tfoot>
     </table>
 </div>

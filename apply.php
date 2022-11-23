@@ -21,7 +21,7 @@ if(isset($_GET['id'])){
                 header("Location: ./university-details.php?id=$uni_id&error=Item already in Added to cart");    
             }else{
                 $result = add_to_application_controller($uni_id,$ip_address,$customerid,$price);
-                header("Location: ./university-details.php?id=$uni_id&message=Item added successfully");    
+                header("Location: ./temp.php?id=$uni_id");    
 
 
             }
