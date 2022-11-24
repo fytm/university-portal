@@ -1,6 +1,8 @@
 <?php 
 require("./Controllers/application_controller.php");
 ?>
+<?php
+// include "header.php";?>
 
 <?php
 $ip_address = getenv("REMOTE_ADDR");
@@ -25,7 +27,6 @@ $ip_address = getenv("REMOTE_ADDR");
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
@@ -33,9 +34,11 @@ $ip_address = getenv("REMOTE_ADDR");
     <!------ Include the above in your HEAD tag ---------->
 
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" />
-    <link href="./assets/css/cart.css" rel="stylesheet" />
+    <link href="./assets/css/main.css" rel="stylesheet" />
 
 </head>
+
+
 <div class="container">
     <table id="cart" class="table table-hover table-condensed">
         <thead>
@@ -106,4 +109,7 @@ $ip_address = getenv("REMOTE_ADDR");
                 ?>
         </tfoot>
     </table>
+
 </div>
+
+    <?php include "footer.php"?>
