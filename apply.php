@@ -1,9 +1,8 @@
 <?php
-
-
-
 require("./Controllers/application_controller.php");
 require("./Settings/core.php");
+?>
+<?php
 // check if theres a POST variable with the name 'addProductButton'
 if(isset($_GET['id'])){
     $uni_id = $_GET['id'];
@@ -21,7 +20,7 @@ if(isset($_GET['id'])){
                 header("Location: ./university-details.php?id=$uni_id&error=Item already in Added to cart");    
             }else{
                 $result = add_to_application_controller($uni_id,$ip_address,$customerid,$price);
-                header("Location: ./temp.php?id=$uni_id");    
+                header("Location: ./university-details.php?id=$uni_id&message=Item added successfully");    
 
 
             }

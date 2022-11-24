@@ -9,14 +9,18 @@ $ip_address = getenv("REMOTE_ADDR");
         $customerid = $_SESSION['user_id'];
         // echo "$customer_id";
         $applications_list = select_all_applications_controller($customer_id, $ip_address);
+        $total = get_total_controller($customer_id, $ip_address);
         // echo "$applications_list";
         // contains app_id, cust_id, uni_id, ip_add, price, total
 
     }else{
         $applications_list = select_all_applications_without_customer_id_controller($ip_address); 
+        $total = get_total_without_customer_id_controller($ip_address);
+
         // echo "$ip_address";
 
     }
+
 ?>
 
 <!DOCTYPE html>
@@ -48,9 +52,10 @@ $ip_address = getenv("REMOTE_ADDR");
           
         ?>
         <tbody>
-            <tr>
+            
                 <?php foreach($applications_list as $x){
-                    echo "<td data-th='University'>
+                    echo "<tr>
+                    <td data-th='University'>
                     <div class='row'>
                         <div class='col-sm-2 hidden-xs'>
                             <img src='http://placehold.it/100x100' alt='...' class='img-responsive' />
@@ -70,32 +75,35 @@ $ip_address = getenv("REMOTE_ADDR");
                     <button class='btn btn-info btn-sm'>
                         <i class='fa fa-refresh'></i>
                     </button>
-                    <button class='btn btn-danger btn-sm'>
-                        <i class='fa fa-trash-o'></i>
+                     <a href ='delete_from_cart.php?id={$x['university_id']}'>
+                     <button class='btn btn-danger btn-sm' >
+                        <i class='fa fa-trash-o' ></i>   
                     </button>
-                </td>";                    
+                    </a>
+                </td>
+             </tr>               
+                ";                    
                 } ?> 
             
-            </tr>
         </tbody>
         <tfoot>
-                <?php foreach($applications_list as $x){
+                <?php 
                     echo " <tr class='visible-xs'>
-                <td class='text-center'><strong>Total: GH₵{$x['total']}</strong></td>
+                <td class='text-center'><strong>Total: GH₵{$total['total']}</strong></td>
             </tr>
             <tr>
                 <td>
-                    <a href='#' class='btn btn-warning'><i class='fa fa-angle-left'></i> Continue Shopping</a>
+                    <a href='universities.php' class='btn btn-warning'><i class='fa fa-angle-left'></i> Continue Applying</a>
                 </td>
                 <td colspan='2' class='hidden-xs'></td>
-                <td class='hidden-xs text-center'><strong>Total: GH₵{$x['total']}</strong></td>
+                <td class='hidden-xs text-center'><strong>Total: GH₵{$total['total']}</strong></td>
                 <td>
                     <a href='#' class='btn btn-success btn-block'>Checkout <i class='fa fa-angle-right'></i></a>
                 </td>
             </tr>";
            
 
-                }?>
+                ?>
         </tfoot>
     </table>
 </div>
