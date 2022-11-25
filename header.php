@@ -17,7 +17,7 @@ echo '    <header id="header" class="header d-flex align-items-center fixed-top"
             <li><a href="index.php" class="active">Home</a></li>
             <li><a href="about.php">About</a></li>
             <li><a href="universities.php">Universities</a></li>
-            <li><a href="blog.php">Blog</a></li>
+            <li><a href="applications.php">Applications</a></li>
             <li><a href="contact.php">Contact</a></li>
           </ul>
         </nav>

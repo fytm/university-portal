@@ -1,2 +1,2 @@
-create new page which is a copy of one of the bootstrap pages
+create new page which is a copy of one of the bootstrap pages(universities page)
 remove content and replace with content of applicaitons.php
