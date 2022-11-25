@@ -1,6 +1,7 @@
 <?php require "./Controllers/university_controller.php";
 $university = select_one_university_controller($_GET['id']);
 $path = select_university_photos_controller($_GET['id']);
+// $num_photos = select_number_of_photos($_GET['id']);
 ?>
 
 <!DOCTYPE html>
@@ -79,14 +80,25 @@ $path = select_university_photos_controller($_GET['id']);
                     <div class="col-lg-8">
                         <div class="slides-1 portfolio-details-slider swiper">
                             <div class="swiper-wrapper align-items-center">
-                                <?php if (isset($_GET['id'])) { 
-                                   foreach ($path as $p) {
-                                      echo" 
-                                        <div class='swiper-slide'>
-                                          <img src='{$p['path']}' alt='Photo'>
-                                        </div>";                              
-                                      }  
-                                    } 
+                                <?php                                          
+                                    if (isset($_GET['id'])) { 
+                                      // if ($num_rows>0){
+
+                                    foreach ($path as $p) {
+                                        echo" 
+                                          <div class='swiper-slide'>
+                                            <img src='{$p['path']}' alt='Photo'>
+                                          </div>";                              
+                                        }  
+                                      
+                                  //   }  else{
+                                  //   echo" 
+                                  //       <div class='swiper-slide'>
+                                  //         <img src='assets/img/universities/UG/UG1.jpg' alt='Photo'>
+                                  //       </div>"; 
+                                  // }
+                                      } 
+                                  
                                 ?>
 
 
@@ -106,7 +118,8 @@ $path = select_university_photos_controller($_GET['id']);
                                 <li><strong>City</strong>: {$university['university_city']}</li>
                                 <li><strong>Email</strong>: <a href=mailto:'{$university['university_email']}'>{$university['university_email']}</a></li>
                                 <li><strong>Phone</strong>: <a href = tel:'+{$university['university_contact']}'>+{$university['university_contact']} </a></li>
-                                
+                                <li><strong>Apply</strong>: <a href = apply.php?id={$university['university_id']} >Click here</a></li>
+
 
                             </ul>
                         </div>
