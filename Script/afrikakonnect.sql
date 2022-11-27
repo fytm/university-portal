@@ -98,3 +98,33 @@ INSERT INTO `uni_photos` (`photo_id`, `uni_id`, `path`, `isLogo`) VALUES
 (3, 34, 'assets/img/universities/UG/UG1.jpg', 0),
 (4, 34, 'assets/img/universities/UG/UG2.jpg', 0);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders`
+--
+
+CREATE TABLE 	`order`(
+order_id int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+`date` date,
+`status` varchar(10),
+cust_id int(11) not null,
+FOREIGN KEY (`cust_id`) REFERENCES `customer` (`customer_id`)
+);
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_details`
+--
+
+CREATE TABLE `order_details`(
+od_id int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+`uni_id` int(11),
+`price` decimal(10,2),
+FOREIGN KEY (`uni_id`) REFERENCES `university`(`university_id`)
+);
+
+
+

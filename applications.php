@@ -12,6 +12,7 @@ $ip_address = getenv("REMOTE_ADDR");
         // echo "$customer_id";
         $applications_list = select_all_applications_controller($customer_id, $ip_address);
         $total = get_total_controller($customer_id, $ip_address);
+
         // echo "$applications_list";
         // contains app_id, cust_id, uni_id, ip_add, price, total
 
@@ -22,6 +23,8 @@ $ip_address = getenv("REMOTE_ADDR");
         // echo "$ip_address";
 
     }
+
+    $_SESSION['total'] = $total;
 
 ?>
 
@@ -92,7 +95,7 @@ $ip_address = getenv("REMOTE_ADDR");
             <div class="container position-relative d-flex flex-column align-items-center">
                 <h2>Applications</h2>
                 <ol>
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.php">Home</a></li>
                     <li>Applications</li>
                 </ol>
             </div>
@@ -139,9 +142,6 @@ $ip_address = getenv("REMOTE_ADDR");
                           <td data-th='City'>{$x['university_city']}</td>
                           <td data-th='Fee' class='text-center'>GH₵{$x['price']}</td>
                           <td class='actions' data-th=''>
-                              <button class='btn btn-info btn-sm'>
-                                  <i class='fa fa-refresh'></i>
-                              </button>
                               <a href ='delete_from_cart.php?id={$x['university_id']}'>
                               <button class='btn btn-danger btn-sm' >
                                   <i class='fa fa-trash-o' ></i>   
@@ -165,7 +165,7 @@ $ip_address = getenv("REMOTE_ADDR");
                           <td colspan='2' class='hidden-xs'></td>
                           <td class='hidden-xs text-center'><strong>Total: GH₵{$total['total']}</strong></td>
                           <td>
-                              <a href='pay.php' class='btn btn-success btn-block'>Checkout <i class='fa fa-angle-right'></i></a>
+                              <a href='payment-page.php' class='btn btn-success btn-block'>Checkout <i class='fa fa-angle-right'></i></a>
                           </td>
                       </tr>";
                     

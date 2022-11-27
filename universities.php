@@ -58,7 +58,7 @@ $university = select_with_logo_controller();
             <div class="container position-relative d-flex flex-column align-items-center">
                 <h2>Universities</h2>
                 <ol>
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.php">Home</a></li>
                     <li>Universities</li>
                 </ol>
             </div>

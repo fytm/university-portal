@@ -1,6 +1,6 @@
 <?php 
 
-require('./Settings/connection.php');
+require_once('./Settings/connection.php');
 
 // inherit the methods from Connection
 class Application extends Connection{
@@ -31,13 +31,13 @@ class Application extends Connection{
         return $this ->query("insert into application(cust_id, uni_id,	ip_add,	price) values('$cust_id', '$id', '$ip_address', '$price') ");
     }
     function delete_from_application($uni_id,$customer_id,$ip){
-        return $this->query("delete from application where cust_id = '$customer_id' or ip_add = '$ip' and uni_id ='$uni_id'");
+        return $this->query("delete from application where uni_id ='$uni_id' and (cust_id = '$customer_id' or ip_add = '$ip') ");
     }
     function delete_from_application_without_customer_id($uni_id,$ip){
         return $this->query("delete from application where ip_add = '$ip' and uni_id ='$uni_id'");
     }
     function delete_all_applications($customer_id, $ip){
-        return $this->query("delete from cart where cust_id = '$customer_id' or ip_add = '$ip' ");
+        return $this->query("delete from application where cust_id = '$customer_id' or ip_add = '$ip' ");
     }
 }
 ?>
