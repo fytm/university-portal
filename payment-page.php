@@ -86,7 +86,6 @@ if(isset($_SESSION['user_id'])){
                 <h5 class='card-title'>{$x['university_name']}</h5>
                 <p class='card-text'>{$x['mission']}</p>
                 <p class='card-text'>{$x['university_country']}</p>
-                <p class='card-text'>{$x['university_price']}</p>
                 <p class='card-text'>{$x['price']}</p>
             </div>
         </div>
@@ -114,7 +113,7 @@ if(isset($_SESSION['user_id'])){
 	function payWithPaystack(e) {
 		e.preventDefault();
 		let handler = PaystackPop.setup({
-			key: 'pk_test_1e8c6d51c1e2d5961ff823c4f5233ce30670f87e', // Replace with your public key
+			key: 'pk_test_214b976264ad8f2bb40862141f0ee79f8ceda31b', // Replace with your public key
 			email: document.getElementById("email-address").value,
 			amount: document.getElementById("amount").value * 100,
 			currency:'GHS',
