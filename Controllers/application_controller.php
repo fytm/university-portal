@@ -52,7 +52,7 @@ function delete_from_application_controller($uni_id,$cust_id,$ip_address){
 
 function delete_from_application_without_customer_id_controller($uni_id,$ip_address){
     $application_instance = new Application();
-    return $application_instance->delete_from_application_without_customer_id($uni_id,$cust_id,$ip_address);
+    return $application_instance->delete_from_application_without_customer_id($uni_id,$ip_address);
 }
 
 function delete_all_applications_controller($cust_id,$ip_address){

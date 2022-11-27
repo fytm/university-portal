@@ -64,7 +64,7 @@ $path = select_university_photos_controller($_GET['id']);
             ?>
                 <!-- <h2>University Details</h2> -->
                 <ol>
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.php">Home</a></li>
                     <li>University Details</li>
                 </ol>
 

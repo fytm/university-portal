@@ -106,7 +106,6 @@ INSERT INTO `uni_photos` (`photo_id`, `uni_id`, `path`, `isLogo`) VALUES
 
 CREATE TABLE 	`order`(
 order_id int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
-invoice_no varchar(50) not null,
 `date` date,
 `status` varchar(10),
 cust_id int(11) not null,
@@ -124,7 +123,7 @@ CREATE TABLE `order_details`(
 od_id int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
 `uni_id` int(11),
 `price` decimal(10,2),
-FOREIGN KEY (`un_id`) REFERENCES `university`(`university_id`)
+FOREIGN KEY (`uni_id`) REFERENCES `university`(`university_id`)
 );
 
 

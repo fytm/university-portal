@@ -2,7 +2,9 @@
 require("./Controllers/application_controller.php");
 ?>
 <?php
-// include "header.php";?>
+include "dotenvReader.php";
+
+(new DotEnv(__DIR__ . '/.env'))->load();?>
 
 <?php
 $ip_address = getenv("REMOTE_ADDR");
@@ -104,12 +106,73 @@ $ip_address = getenv("REMOTE_ADDR");
                     <a href='#' class='btn btn-success btn-block'>Checkout <i class='fa fa-angle-right'></i></a>
                 </td>
             </tr>";
-           
 
                 ?>
         </tfoot>
     </table>
 
 </div>
+
+<?php
+require_once('./Controllers/order_controller.php');
+// require_once('./Controllers/payment_controller.php');
+require_once('./Settings/core.php'); ?>
+
+<?php 
+            //echo getenv("PAYSTACK_PUBLIC_KEY");
+            // echo "hello";
+            $status = $decodedResponse->data->status;/////////need
+            $datetime = date("Y-m-d H:i:s:u");
+            echo $datetime;
+            $status = "Success";
+            $customer_id = $_SESSION['user_id'];
+            $ip = getenv('REMOTE_ADDR');
+
+            $total = get_total_controller($customer_id, $ip_address);
+            $currency = "GHC";
+            $result = add_to_orders_controller($customer_id, $datetime, $status,$total,$currency);
+
+            
+
+            if($result){
+                $order_id = select_order_id_controller($datetime);
+                $selectfromcart = select_all_applications_controller($customer_id, $ip);
+                foreach($selectfromcart as $select){
+                $uni_id = $select['uni_id'];
+                $price =  $select["price"];
+                // inserting the information into the order details  table
+                $orderDetails = add_order_details_controller($order_id['order_id'], $uni_id, $price);
+                echo "</br>";
+                echo "$orderDetails";
+                } 
+            }
+
+
+
+          
+        // inserting into the payment table 
+        
+        if($result){
+
+            // if payment is successful remove the customers applications from the cart
+            $removefromcart = delete_all_applications_controller($customer_id, $ip);
+    
+    
+            if($removefromcart){
+                echo "success";
+                // header("Location: ../View/success.html");
+            }else{
+                echo "failure";
+                // header("Location: ../View/failure.html");
+            }
+
+    }
+            
+
+
+            
+        
+
+?>
 
     <?php include "footer.php"?>

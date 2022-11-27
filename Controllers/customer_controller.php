@@ -1,6 +1,6 @@
 <?php
 
-require('../Classes/customer_class.php');
+require('./Classes/customer_class.php');
 
 function add_customer_controller($name, $email, $password, $country, $city, $contact, $role){
 
