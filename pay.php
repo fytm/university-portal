@@ -82,10 +82,10 @@ if(isset($decodedResponse->data->status) && $decodedResponse->data->status === '
     
             if($removefromcart){
                 echo "success";
-                header("Location: ../View/success.html");
+                header("Location: ./View/success.html");
             }else{
                 echo "failure";
-                header("Location: ../View/failure.html");
+                header("Location: ./View/failure.html");
             }
 
     }
