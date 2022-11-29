@@ -55,9 +55,9 @@ if(isset($decodedResponse->data->status) && $decodedResponse->data->status === '
             $customer_id = $_SESSION['user_id'];
             $ip = getenv('REMOTE_ADDR');
 
-            $total = get_total_controller($customer_id, $ip_address);
+            $total = get_total_controller($customer_id, $ip);
             $currency = "GHC";
-            $result = add_to_orders_controller($customer_id, $datetime, $status,$total,$currency);
+            $result = add_to_orders_controller($customer_id, $datetime, $status,$total['total'],$currency);
 
             
 
@@ -82,10 +82,10 @@ if(isset($decodedResponse->data->status) && $decodedResponse->data->status === '
     
             if($removefromcart){
                 echo "success";
-                // header("Location: ../View/success.html");
+                header("Location: ./View/success.html");
             }else{
                 echo "failure";
-                // header("Location: ../View/failure.html");
+                header("Location: ./View/failure.html");
             }
 
     }
@@ -100,6 +100,8 @@ if(isset($decodedResponse->data->status) && $decodedResponse->data->status === '
 }else{
     // if verification failed
     echo $response;
+    echo $err;
+    // var_dump ($decodedResponse);
 }
 
 
