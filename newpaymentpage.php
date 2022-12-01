@@ -2,9 +2,6 @@
 require("./Controllers/application_controller.php");
 ?>
 <?php
-// include "header.php";?>
-
-<?php
 $ip_address = getenv("REMOTE_ADDR");
 // echo "$ip_address";
     if(isset($_SESSION['user_role'])){
@@ -28,6 +25,28 @@ $ip_address = getenv("REMOTE_ADDR");
 
 ?>
 
+<?php
+require_once('./Controllers/customer_controller.php');
+require_once('./Settings/core.php');
+
+
+if(!isset($_SESSION['user_id'])){
+    header("Location: ../Login/login.php");
+}
+
+
+if(isset($_SESSION['user_id'])){
+
+    $check = select_one_customer_controller($_SESSION['user_id']);
+    $product = select_all_applications_controller($_SESSION['user_id'], getenv("REMOTE_ADDR"));
+
+    $email = $check['customer_email'];
+    // $total = $_SESSION['total'];
+    // echo $total;
+}
+
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -36,7 +55,7 @@ $ip_address = getenv("REMOTE_ADDR");
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-    <title>Applications - Afrika Konnect</title>
+    <title>Checkout - Afrika Konnect</title>
     <meta content="" name="description" />
     <meta content="" name="keywords" />
 
@@ -80,8 +99,8 @@ $ip_address = getenv("REMOTE_ADDR");
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" />
     <!-- <link href="./assets/css/applications.css" rel="stylesheet" /> -->
 <!-- End of bootstrap for applications list -->
-
 </head>
+
 
 <body class="page-portfolio">
     <!-- ======= Header ======= -->
@@ -93,62 +112,66 @@ $ip_address = getenv("REMOTE_ADDR");
         <div class="breadcrumbs d-flex align-items-center"
             style="background-image: url('assets/img/portfolio-header.jpg')">
             <div class="container position-relative d-flex flex-column align-items-center">
-                <h2>Applications</h2>
+                <h2>Checkout</h2>
                 <ol>
-                    <li><a href="index.php">Home</a></li>
-                    <li>Applications</li>
+                    <li><a href="universities.php">Universities</a></li>
+                    <li>Checkout</li>
                 </ol>
             </div>
 
         </div>
         <!-- End Breadcrumbs -->
 
-        <!-- ======= Applications View Section ======= -->
-        <div class ="applications-container">
-    </br>
-          <div class="container">
-              <table id="cart" class="table table-hover table-condensed">
-                  <thead>
-                      <tr>
-                          <th style="width: 50%">University</th>
-                          <th style="width: 18%">Country</th>
-                          <th style="width: 18%">City</th>
-                          <th style="width: 22%" class="text-center">Application Fee</th>
-                          <th style="width: 10%"></th>
-                      </tr>
-                  </thead>
+        <!== Payment Form Section -->
+        <form method="post" id="paymentForm" action="#" style="width: 50%; margin-left: 25%; margin-top:10%">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" id="email-address" required class="form-control"  aria-describedby="emailHelp" value="<?php echo $email   ?>">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Total Price</label>
+                <input type="text" name="amount" required id="amount" class="form-control" placeholder="<?php echo $_SESSION["total"]  ?>" readonly>
+            </div>
+            <button type="submit" onclick="payWithPaystack()" class="btn btn-primary">Make Payment</button>
+        </form>
 
-                  <?php 
-                    
-                  ?>
-                  <tbody>
-                      
-                          <?php foreach($applications_list as $x){
-                              echo "<tr>
-                              <td data-th='University'>
-                              <div class='row'>
-                                  <div class='col-sm-2 hidden-xs'>
-                                      <img src='http://placehold.it/100x100' alt='...' class='img-responsive' />
-                                  </div>
-                                  <div class='col-sm-10'>
-                                      <h4 class='nomargin'>{$x['university_name']}</h4>
-                                      <p>
-                                          {$x['mission']}
-                                      </p>
-                                  </div>
-                              </div>
-                          </td>
-                          <td data-th='Country'>{$x['university_country']}</td>
-                          <td data-th='City'>{$x['university_city']}</td>
-                          <td data-th='Fee' class='text-center'>GH₵{$x['price']}</td>
-                          <td class='actions' data-th=''>
-                              <a href ='delete_from_cart.php?id={$x['university_id']}'>
-                              <button class='btn btn-danger btn-sm' >
-                                  <i class='fa fa-trash-o' ></i>   
-                              </button>
-                              </a>
-                          </td>
-                      </tr>               
+        <h4 style="margin-top: 35px; text-align:center">View applications</h4>
+        <!-- ======= Applications View Section ======= -->
+        <div class ="applications-container" style="width: 50%; margin-left: 25%; margin-top:10%>
+        </br>
+        <div class="container" >
+            <table id="cart" class="table table-hover table-condensed">
+                <thead>
+                <tr>
+                    <th style="width: 25%">University</th>
+                    <th style="width: 9%">Country</th>
+                    <th style="width: 9%">City</th>
+                    <th style="width: 11%" class="text-center">Application Fee</th>
+                    <th style="width: 5%"></th>
+                </tr>
+                </thead>
+                <tbody>                      
+                    <?php foreach($applications_list as $x){
+                        echo "
+                        <tr>
+                            <td data-th='University'>
+                            <div class='row'>
+                                <div class='col-sm-2 hidden-xs'>
+                                    <img src='http://placehold.it/100x100' alt='...' class='img-responsive' />
+                                </div>
+                                <div class='col-sm-10'>
+                                    <h4 class='nomargin'>{$x['university_name']}</h4>
+                                    <p>
+                                        {$x['mission']}
+                                    </p>
+                                </div>
+                            </div>
+                            </td>
+                            <td data-th='Country'>{$x['university_country']}</td>
+                            <td data-th='City'>{$x['university_city']}</td>
+                            <td data-th='Fee' class='text-center'>GH₵{$x['price']}</td>                          
+                        </tr>               
                           ";                    
                           } ?> 
                       
@@ -160,13 +183,11 @@ $ip_address = getenv("REMOTE_ADDR");
                       </tr>
                       <tr>
                           <td>
-                              <a href='universities.php' class='btn btn-warning'><i class='fa fa-angle-left'></i> Continue Applying</a>
+                              <a href='universities.php' class='btn btn-warning'><i class='fa fa-angle-left'></i> Edit Application</a>
                           </td>
                           <td colspan='2' class='hidden-xs'></td>
                           <td class='hidden-xs text-center'><strong>Total: GH₵{$total['total']}</strong></td>
-                          <td>
-                              <a href='payment-page.php' class='btn btn-success btn-block'>Checkout <i class='fa fa-angle-right'></i></a>
-                          </td>
+
                       </tr>";
                     
 
@@ -201,6 +222,36 @@ $ip_address = getenv("REMOTE_ADDR");
 
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
+
+
+    	<!-- PAYSTACK INLINE SCRIPT -->
+<script src="https://js.paystack.co/v1/inline.js"></script> 
+
+<script>
+	const paymentForm = document.getElementById('paymentForm');
+	paymentForm.addEventListener("submit", payWithPaystack, false);
+
+	// PAYMENT FUNCTION
+	function payWithPaystack(e) {
+		e.preventDefault();
+		let handler = PaystackPop.setup({
+			key: 'pk_test_214b976264ad8f2bb40862141f0ee79f8ceda31b', // Replace with your public key
+			email: document.getElementById("email-address").value,
+			amount: document.getElementById("amount").value * 100,
+			currency:'GHS',
+			onClose: function(){
+			alert('Window closed.');
+			},
+			callback: function(response){
+				window.location = `./pay.php?email=${document.getElementById("email-address").value}&amount=${document.getElementById("amount").value}&reference=${response.reference}`
+			}
+		});
+		handler.openIframe();
+	}
+
+</script>
+
+
 </body>
 
 </html>
