@@ -6,9 +6,9 @@ require_once('../Settings/connection.php');
 class University extends Connection{
 
 
-    function add_university($name,$email,$description,$country,$city,$contact){
+    function add_university($name,$email,$mission, $description,$country,$city,$contact){
 
-		return $this->query("insert into university(university_name, university_email, university_description, university_country, university_city, university_contact) values('$name', '$email', '$description', '$country', '$city','$contact')");
+		return $this->query("insert into university(university_name, university_email, mission, university_description, university_country, university_city, university_contact) values('$name', '$email','$mission', '$description', '$country', '$city','$contact')");
 	}
 
     function select_all_universities_plus_logos(){
@@ -25,9 +25,9 @@ class University extends Connection{
 		return $this->fetchOne("select * from university where university_id='$id'");
 	}
 
-    function update_university($name,$email,$description,$country,$city,$contact, $id){
+    function update_university($name,$email,$mission, $description,$country,$city,$contact, $id){
 
-		return $this->query("update university set university_name = '$name',university_email = '$email', university_description = '$description', university_country = '$country', university_city = '$city', university_contact = '$contact' where product_id = '$id' ");
+		return $this->query("update university set university_name = '$name',university_email = '$email', mission = '$mission', university_description = '$description', university_country = '$country', university_city = '$city', university_contact = '$contact' where university_id = '$id' ");
 	}
 
 	function select_photos($id){

@@ -2,10 +2,10 @@
 
 require('../Classes/university_class.php');
 
-function add_university_controller($name,$email,$description,$country,$city,$contact){
+function add_university_controller($name,$email,$mission,$description,$country,$city,$contact){
     $university_instance = new University();
     // call the method from the class
-    return $university_instance->add_university($name,$email,$description,$country,$city,$contact);
+    return $university_instance->add_university($name,$email,$mission, $description,$country,$city,$contact);
 }
 
 function list_universities_controller(){
@@ -20,10 +20,10 @@ function select_one_university_controller($id){
     return $university_instance->select_one_university($id);
 }
 
-function update_university_controller($name,$email,$description,$country,$city,$contact, $id){
+function update_university_controller($name,$email,$mission, $description,$country,$city,$contact, $id){
     $university_instance = new University();
     // call the method from the class
-    return $university_instance->update_university($name,$email,$description,$country,$city,$contact, $id);
+    return $university_instance->update_university($name,$email,$mission, $description,$country,$city,$contact, $id);
 }
 
 function select_with_logo_controller(){
