@@ -1,5 +1,5 @@
 <?php 
-require_once('./Settings/connection.php');
+require_once('../Settings/connection.php');
 
 class Course extends Connection{
     function select_all_courses_for_particular_university($uni_id){

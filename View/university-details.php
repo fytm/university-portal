@@ -1,4 +1,4 @@
-<?php require "./Controllers/university_controller.php";
+<?php require "../Controllers/university_controller.php";
 $university = select_one_university_controller($_GET['id']);
 $path = select_university_photos_controller($_GET['id']);
 // $num_photos = select_number_of_photos($_GET['id']);
@@ -16,8 +16,8 @@ $path = select_university_photos_controller($_GET['id']);
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="assets/img/favicon.png" rel="icon">
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="../assets/img/favicon.png" rel="icon">
+    <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,15 +27,15 @@ $path = select_university_photos_controller($_GET['id']);
         rel="stylesheet">
 
     <!-- Vendor CSS Files -->
-    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-    <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="../assets/vendor/remixicon/remixicon.css" rel="stylesheet">
 
     <!-- Template Main CSS File -->
-    <link href="assets/css/main.css" rel="stylesheet">
+    <link href="../assets/css/main.css" rel="stylesheet">
 
     <!-- =======================================================
   * Template Name: Nova - v1.2.1
@@ -48,14 +48,14 @@ $path = select_university_photos_controller($_GET['id']);
 <body class="page-portfolio">
 
     <!-- ======= Header ======= -->
-    <?php include "header.php"; ?>
+    <?php include "../header.php"; ?>
     <!-- End Header -->
 
     <main id="main">
 
         <!-- ======= Breadcrumbs ======= -->
         <div class="breadcrumbs d-flex align-items-center"
-            style="background-image: url('assets/img/portfolio-header.jpg');">
+            style="background-image: url('../assets/img/portfolio-header.jpg');">
             <div class="container position-relative d-flex flex-column align-items-center">
 
                 <?php if (isset($_GET['id'])) {
@@ -64,7 +64,7 @@ $path = select_university_photos_controller($_GET['id']);
             ?>
                 <!-- <h2>University Details</h2> -->
                 <ol>
-                    <li><a href="index.php">Home</a></li>
+                    <li><a href="../index.php">Home</a></li>
                     <li>University Details</li>
                 </ol>
 
@@ -94,7 +94,7 @@ $path = select_university_photos_controller($_GET['id']);
                                   //   }  else{
                                   //   echo" 
                                   //       <div class='swiper-slide'>
-                                  //         <img src='assets/img/universities/UG/UG1.jpg' alt='Photo'>
+                                  //         <img src='../assets/img/universities/UG/UG1.jpg' alt='Photo'>
                                   //       </div>"; 
                                   // }
                                       } 
@@ -118,7 +118,7 @@ $path = select_university_photos_controller($_GET['id']);
                                 <li><strong>City</strong>: {$university['university_city']}</li>
                                 <li><strong>Email</strong>: <a href=mailto:'{$university['university_email']}'>{$university['university_email']}</a></li>
                                 <li><strong>Phone</strong>: <a href = tel:'+{$university['university_contact']}'>+{$university['university_contact']} </a></li>
-                                <li><strong>Apply</strong>: <a href = apply.php?id={$university['university_id']} >Click here</a></li>
+                                <li><strong>Apply</strong>: <a href = ../Action/apply.php?id={$university['university_id']} >Click here</a></li>
 
 
                             </ul>
@@ -141,7 +141,7 @@ $path = select_university_photos_controller($_GET['id']);
     </main><!-- End #main -->
 
     <!-- ======= Footer ======= -->
-    <?php include "footer.php"?>
+    <?php include "../footer.php"?>
     <!-- End Footer -->
 
     <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i
@@ -150,15 +150,15 @@ $path = select_university_photos_controller($_GET['id']);
     <div id="preloader"></div>
 
     <!-- Vendor JS Files -->
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/vendor/aos/aos.js"></script>
-    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="assets/vendor/php-email-form/validate.js"></script>
+    <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/vendor/aos/aos.js"></script>
+    <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="../assets/vendor/php-email-form/validate.js"></script>
 
     <!-- Template Main JS File -->
-    <script src="assets/js/main.js"></script>
+    <script src="../assets/js/main.js"></script>
 
 </body>
 

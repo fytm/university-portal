@@ -1,6 +1,6 @@
 <?php 
 
-require_once('./Settings/connection.php');
+require_once('../Settings/connection.php');
 
 class Order extends Connection{
     function add_to_orders($cust_id, $datetime, $status,$total,$currency){

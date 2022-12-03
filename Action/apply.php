@@ -1,6 +1,6 @@
 <?php
-require("./Controllers/application_controller.php");
-require("./Settings/core.php");
+require("../Controllers/application_controller.php");
+require("../Settings/core.php");
 ?>
 <?php
 // check if theres a POST variable with the name 'addProductButton'
@@ -17,20 +17,20 @@ if(isset($_GET['id'])){
         // if(isset($check)){
             // if(($check['uni_id'] == $id) && ($check['cust_id'] == $customerid)){
             if($check['uni_id'] == $uni_id ){     
-                header("Location: ./university-details.php?id=$uni_id&error=Item already in Added to cart");    
+                header("Location: ../View/university-details.php?id=$uni_id&error=Item already in Added to cart");    
             }else{
                 $result = add_to_application_controller($uni_id,$ip_address,$customerid,$price);
-                header("Location: ./university-details.php?id=$uni_id&message=Item added successfully");    
+                header("Location: ../View/university-details.php?id=$uni_id&message=Item added successfully");    
 
 
             }
     //}
     }else{
         if($check['uni_id'] == $uni_id ){     
-                header("Location: ./university-details.php?id=$uni_id&error=Item already in Added to cart");    
+                header("Location: ../View/university-details.php?id=$uni_id&error=Item already in Added to cart");    
             }else{
                 $result = add_to_application_without_customer_id_controller($uni_id,$ip_address,$price);
-                header("Location: ./university-details.php?id=$uni_id&message=Item added successfully");    
+                header("Location: ../View/university-details.php?id=$uni_id&message=Item added successfully");    
             }
     }
 }

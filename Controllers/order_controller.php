@@ -1,5 +1,5 @@
 <?php
-require('./Classes/order_class.php');
+require('../Classes/order_class.php');
 
 function add_to_orders_controller($customer_id, $datetime, $status,$total,$currency){
     $order_instance = new Order();

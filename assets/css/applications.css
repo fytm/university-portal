@@ -4,8 +4,10 @@
 }
 
 .applications-container {
-    padding-top: 1.5 rem;
-    color: blue;
+/* width: 50%;  */
+/* margin-left: 25%;  */
+/* margin-top:10% */
+
 }
 
 @media screen and (max-width: 600px) {

@@ -1,6 +1,6 @@
 <?php
 
-require('./Classes/application_class.php');
+require('../Classes/application_class.php');
 
 //actually selects all items for one university
 function select_single_application_item_controller($uni_id,$cust_id){

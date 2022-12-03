@@ -1,6 +1,6 @@
 <?php 
 
-require_once('./Settings/connection.php');
+require_once('../Settings/connection.php');
 
 class Payment extends Connection{
     function add_payment_controller($customer_id, $order_id, $total, $currency, $datetime){

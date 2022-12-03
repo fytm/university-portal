@@ -1,11 +1,13 @@
 <?php 
-require("./Controllers/application_controller.php");
+require_once("../Controllers/application_controller.php");
+require_once('../Controllers/customer_controller.php');
+require_once('../Settings/core.php');
 ?>
 <?php
 $ip_address = getenv("REMOTE_ADDR");
 // echo "$ip_address";
     if(isset($_SESSION['user_role'])){
-        $customerid = $_SESSION['user_id'];
+        $customer_id = $_SESSION['user_id'];
         // echo "$customer_id";
         $applications_list = select_all_applications_controller($customer_id, $ip_address);
         $total = get_total_controller($customer_id, $ip_address);
@@ -21,13 +23,12 @@ $ip_address = getenv("REMOTE_ADDR");
 
     }
 
-    $_SESSION['total'] = $total;
+    $_SESSION['total'] = $total['total'];
 
 ?>
 
 <?php
-require_once('./Controllers/customer_controller.php');
-require_once('./Settings/core.php');
+
 
 
 if(!isset($_SESSION['user_id'])){
@@ -60,8 +61,8 @@ if(isset($_SESSION['user_id'])){
     <meta content="" name="keywords" />
 
     <!-- Favicons -->
-    <link href="assets/img/favicon.png" rel="icon" />
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
+    <link href="../assets/img/favicon.png" rel="icon" />
+    <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -73,15 +74,15 @@ if(isset($_SESSION['user_id'])){
     
     <!-- Start of bootstrap stylesheets for page template -->
     <!-- Vendor CSS Files -->
-    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
-    <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
-    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
-    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
-    <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet" />
+    <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+    <link href="../assets/vendor/aos/aos.css" rel="stylesheet" />
+    <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
+    <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+    <link href="../assets/vendor/remixicon/remixicon.css" rel="stylesheet" />
 
     <!-- Template Main CSS File -->
-    <link href="assets/css/main.css" rel="stylesheet" />
+    <link href="../assets/css/main.css" rel="stylesheet" />
 
     <!-- =======================================================
   * Template Name: Nova - v1.2.1
@@ -97,24 +98,24 @@ if(isset($_SESSION['user_id'])){
     <!------ Include the above in your HEAD tag ---------->
 
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" />
-    <!-- <link href="./assets/css/applications.css" rel="stylesheet" /> -->
+    <!-- <link href="./../assets/css/applications.css" rel="stylesheet" /> -->
 <!-- End of bootstrap for applications list -->
 </head>
 
 
 <body class="page-portfolio">
     <!-- ======= Header ======= -->
-    <?php include 'header.php';?>
+    <?php include '../header.php';?>
     <!-- End Header -->
 
     <main id="main">
           <!-- ======= Breadcrumbs ======= -->
         <div class="breadcrumbs d-flex align-items-center"
-            style="background-image: url('assets/img/portfolio-header.jpg')">
+            style="background-image: url('../assets/img/portfolio-header.jpg')">
             <div class="container position-relative d-flex flex-column align-items-center">
                 <h2>Checkout</h2>
                 <ol>
-                    <li><a href="universities.php">Universities</a></li>
+                    <li><a href="../View/universities.php">Universities</a></li>
                     <li>Checkout</li>
                 </ol>
             </div>
@@ -138,71 +139,71 @@ if(isset($_SESSION['user_id'])){
 
         <h4 style="margin-top: 35px; text-align:center">View applications</h4>
         <!-- ======= Applications View Section ======= -->
-        <div class ="applications-container" style="width: 50%; margin-left: 25%; margin-top:10%">
-        </br>
-        <div class="container" >
-            <table id="cart" class="table table-hover table-condensed">
-                <thead>
-                <tr>
-                    <th style="width: 25%">University</th>
-                    <th style="width: 9%">Country</th>
-                    <th style="width: 9%">City</th>
-                    <th style="width: 11%" class="text-center">Application Fee</th>
-                    <th style="width: 5%"></th>
-                </tr>
-                </thead>
-                <tbody>                      
-                    <?php foreach($applications_list as $x){
-                        echo "
+        <div class ="applications-container" style="width: 50%; margin-left: 25%; margin-top:10% >
+            </br>
+                <div class="container" >
+                    <table id="cart" class="table table-hover table-condensed">
+                        <thead>
                         <tr>
-                            <td data-th='University'>
-                            <div class='row'>
-                                <div class='col-sm-2 hidden-xs'>
-                                    <img src='http://placehold.it/100x100' alt='...' class='img-responsive' />
-                                </div>
-                                <div class='col-sm-10'>
-                                    <h4 class='nomargin'>{$x['university_name']}</h4>
-                                    <p>
-                                        {$x['mission']}
-                                    </p>
-                                </div>
-                            </div>
-                            </td>
-                            <td data-th='Country'>{$x['university_country']}</td>
-                            <td data-th='City'>{$x['university_city']}</td>
-                            <td data-th='Fee' class='text-center'>GH₵{$x['price']}</td>                          
-                        </tr>               
-                          ";                    
-                          } ?> 
-                      
-                  </tbody>
-                  <tfoot>
-                          <?php 
-                              echo " <tr class='visible-xs'>
-                          <td class='text-center'><strong>Total: GH₵{$total['total']}</strong></td>
-                      </tr>
-                      <tr>
-                          <td>
-                              <a href='universities.php' class='btn btn-warning'><i class='fa fa-angle-left'></i> Edit Application</a>
-                          </td>
-                          <td colspan='2' class='hidden-xs'></td>
-                          <td class='hidden-xs text-center'><strong>Total: GH₵{$total['total']}</strong></td>
+                            <th style="width: 25%">University</th>
+                            <th style="width: 9%">Country</th>
+                            <th style="width: 9%">City</th>
+                            <th style="width: 11%" class="text-center">Application Fee</th>
+                            <th style="width: 5%"></th>
+                        </tr>
+                        </thead>
+                        <tbody>                      
+                            <?php foreach($applications_list as $x){
+                                echo "
+                                <tr>
+                                    <td data-th='University'>
+                                    <div class='row'>
+                                        <div class='col-sm-2 hidden-xs'>
+                                            <img src='http://placehold.it/100x100' alt='...' class='img-responsive' />
+                                        </div>
+                                        <div class='col-sm-10'>
+                                            <h4 class='nomargin'>{$x['university_name']}</h4>
+                                            <p>
+                                                {$x['mission']}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    </td>
+                                    <td data-th='Country'>{$x['university_country']}</td>
+                                    <td data-th='City'>{$x['university_city']}</td>
+                                    <td data-th='Fee' class='text-center'>GH₵{$x['price']}</td>                          
+                                </tr>               
+                                ";                    
+                                } ?> 
+                            
+                        </tbody>
+                        <tfoot>
+                                <?php 
+                                    echo " <tr class='visible-xs'>
+                                <td class='text-center'><strong>Total: GH₵{$total['total']}</strong></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href='../View/universities.php' class='btn btn-warning'><i class='fa fa-angle-left'></i> Edit Application</a>
+                                </td>
+                                <td colspan='2' class='hidden-xs'></td>
+                                <td class='hidden-xs text-center'><strong>Total: GH₵{$total['total']}</strong></td>
 
-                      </tr>";
-                    
+                            </tr>";
+                            
 
-                          ?>
-                  </tfoot>
-              </table>
+                                ?>
+                        </tfoot>
+                    </table>
 
-          </div>
+                </div>
         </div>
         <!-- End Applications View Section -->
     </main>
     <!-- End #main -->
 
     <!-- ======= Footer ======= -->
-    <?php include 'footer.php';?>
+    <?php include '../footer.php';?>
 
     <!-- End Footer -->
     <!-- End Footer -->
@@ -213,15 +214,15 @@ if(isset($_SESSION['user_id'])){
     <div id="preloader"></div>
 
     <!-- Vendor JS Files -->
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/vendor/aos/aos.js"></script>
-    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="assets/vendor/php-email-form/validate.js"></script>
+    <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/vendor/aos/aos.js"></script>
+    <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="../assets/vendor/php-email-form/validate.js"></script>
 
     <!-- Template Main JS File -->
-    <script src="assets/js/main.js"></script>
+    <script src="../assets/js/main.js"></script>
 
 
     	<!-- PAYSTACK INLINE SCRIPT -->
@@ -243,7 +244,7 @@ if(isset($_SESSION['user_id'])){
 			alert('Window closed.');
 			},
 			callback: function(response){
-				window.location = `./pay.php?email=${document.getElementById("email-address").value}&amount=${document.getElementById("amount").value}&reference=${response.reference}`
+				window.location = `../Action/pay.php?email=${document.getElementById("email-address").value}&amount=${document.getElementById("amount").value}&reference=${response.reference}`
 			}
 		});
 		handler.openIframe();

@@ -25,39 +25,6 @@ require('../Controllers/customer_controller.php');
 }
 
 
-////////////////////////////////////////////Edit from products to universities
-if(isset($_GET['deleteProductID'])){
-
-    $id = $_GET['deleteProductID'];
-
-    // call the function
-    $result = delete_product_controller($id);
-
-    if($result === true) header("Location: ../views/products.php");
-    else echo "deletion failed";
-
-
-}
-
-
-if(isset($_POST["updateProductID"])){
-
-    $id = $_POST['id'];
-    $name = $_POST['name'];
-    $description = $_POST['desc'];
-    $qty = $_POST['qty'];
-
-
-    // Call the function
-    $results = update_product_controller($id, $name, $description, $qty);
-    if($results === true) header("Location: ../views/products.php");
-    else echo "deletion failed";
-}
-
-
-// updating
-
-
 
 
 ?>
