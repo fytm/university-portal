@@ -1,30 +1,29 @@
 <?php 
-require("../Controllers/application_controller.php");
+require("../Controllers/university_controller.php");
+@session_start();
 ?>
-<?php
-// include "header.php";?>
+
 
 <?php
-$ip_address = getenv("REMOTE_ADDR");
 // echo "$ip_address";
-    if(isset($_SESSION['user_role'])){
-        $customerid = $_SESSION['user_id'];
-        // echo "$customer_id";
-        $applications_list = select_all_applications_controller($customer_id, $ip_address);
-        $total = get_total_controller($customer_id, $ip_address);
+if(isset($_SESSION['user_role']) && isset($_SESSION['user_id'])){
 
-        // echo "$applications_list";
-        // contains app_id, cust_id, uni_id, ip_add, price, total
+    // echo "entered\n";
+    if($_SESSION['user_role'] == 1){
+            $customerid = $_SESSION['user_id'];
+            // echo "authorised\n";
 
-    }else{
-        $applications_list = select_all_applications_without_customer_id_controller($ip_address); 
-        $total = get_total_without_customer_id_controller($ip_address);
+            //select all universities
+            $all_universities = list_universities_controller();
 
-        // echo "$ip_address";
+        }else{
+            echo "unauthorised";
+        }
 
     }
 
-    $_SESSION['total'] = $total;
+        // echo "Hello";
+
 
 ?>
 
@@ -36,7 +35,7 @@ $ip_address = getenv("REMOTE_ADDR");
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-    <title>Applications - Afrika Konnect</title>
+    <title>Admin Page</title>
     <meta content="" name="description" />
     <meta content="" name="keywords" />
 
@@ -51,25 +50,6 @@ $ip_address = getenv("REMOTE_ADDR");
         href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
         rel="stylesheet" />
 
-    
-    <!-- Start of bootstrap stylesheets for page template -->
-    <!-- Vendor CSS Files -->
-    <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
-    <link href="../assets/vendor/aos/aos.css" rel="stylesheet" />
-    <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
-    <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
-    <link href="../assets/vendor/remixicon/remixicon.css" rel="stylesheet" />
-
-    <!-- Template Main CSS File -->
-    <link href="../assets/css/main.css" rel="stylesheet" />
-
-    <!-- =======================================================
-  * Template Name: Nova - v1.2.1
-  * Template URL: https://bootstrapmade.com/nova-bootstrap-business-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 
 <!-- Start of bootstrap stylesheets for applications list -->
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
@@ -84,46 +64,27 @@ $ip_address = getenv("REMOTE_ADDR");
 </head>
 
 <body class="page-portfolio">
-    <!-- ======= Header ======= -->
-    <?php include '../Headers/header.php';?>
-    <!-- End Header -->
 
-    <main id="main">
-          <!-- ======= Breadcrumbs ======= -->
-        <div class="breadcrumbs d-flex align-items-center"
-            style="background-image: url('../assets/img/portfolio-header.jpg')">
-            <div class="container position-relative d-flex flex-column align-items-center">
-                <h2>Applications</h2>
-                <ol>
-                    <li><a href="../View/index.php">Home</a></li>
-                    <li>Applications</li>
-                </ol>
-            </div>
-
-        </div>
-        <!-- End Breadcrumbs -->
 
         <!-- ======= Applications View Section ======= -->
         <div class ="applications-container">
-    </br>
-          <div class="container">
+            </br>
+            <div class="container">
               <table id="cart" class="table table-hover table-condensed">
                   <thead>
                       <tr>
                           <th style="width: 50%">University</th>
+                          <th style="width: 22%">Email</th>
                           <th style="width: 18%">Country</th>
                           <th style="width: 18%">City</th>
-                          <th style="width: 22%" class="text-center">Application Fee</th>
                           <th style="width: 10%"></th>
                       </tr>
                   </thead>
-
-                  <?php 
-                    
-                  ?>
                   <tbody>
                       
-                          <?php foreach($applications_list as $x){
+                <?php 
+                    if(isset($_SESSION['user_role'])){
+                          foreach($all_universities as $x){
                               echo "<tr>
                               <td data-th='University'>
                               <div class='row'>
@@ -138,50 +99,43 @@ $ip_address = getenv("REMOTE_ADDR");
                                   </div>
                               </div>
                           </td>
+                          <td data-th='Email'>{$x['university_email']}</td>
                           <td data-th='Country'>{$x['university_country']}</td>
                           <td data-th='City'>{$x['university_city']}</td>
-                          <td data-th='Fee' class='text-center'>GH₵{$x['price']}</td>
                           <td class='actions' data-th=''>
-                              <a href ='../Action/delete_from_cart.php?id={$x['university_id']}'>
-                              <button class='btn btn-danger btn-sm' >
-                                  <i class='fa fa-trash-o' ></i>   
+                              <a href ='../Admin/update_university.php?uni_id={$x['university_id']}'>
+                              <button class='btn btn-sm' >
+                                  <i class='fas fa-edit' ></i>   
                               </button>
                               </a>
                           </td>
+                          <td class='actions' data-th=''>
+                            <a href ='../Admin/delete_university.php?uni_id={$x['university_id']}'>
+                            <button class='btn btn-danger btn-sm' >
+                                <i class='fa fa-trash-o' ></i>   
+                            </button>
+                            </a>
+                          </td>
                       </tr>               
                           ";                    
-                          } ?> 
+                          }
+                         } ?> 
                       
                   </tbody>
                   <tfoot>
-                          <?php 
-                              echo " <tr class='visible-xs'>
-                          <td class='text-center'><strong>Total: GH₵{$total['total']}</strong></td>
-                      </tr>
                       <tr>
                           <td>
-                              <a href='../View/universities.php' class='btn btn-warning'><i class='fa fa-angle-left'></i> Continue Applying</a>
+                              <a href='../Admin/add_university.html' class='btn btn-success btn-block'>Add University <i class='fa fa-angle-right'></i></a>
                           </td>
-                          <td colspan='2' class='hidden-xs'></td>
-                          <td class='hidden-xs text-center'><strong>Total: GH₵{$total['total']}</strong></td>
-                          <td>
-                              <a href='../View/payment-page.php' class='btn btn-success btn-block'>Checkout <i class='fa fa-angle-right'></i></a>
-                          </td>
-                      </tr>";
-                          ?>
+                      </tr>
                   </tfoot>
               </table>
 
           </div>
         </div>
         <!-- End Applications View Section -->
-    </main>
-    <!-- End #main -->
 
-    <!-- ======= Footer ======= -->
-    <?php include '../Headers/footer.php';?>
 
-    <!-- End Footer -->
     <!-- End Footer -->
 
     <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i
@@ -197,8 +151,6 @@ $ip_address = getenv("REMOTE_ADDR");
     <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
     <script src="../assets/vendor/php-email-form/validate.js"></script>
 
-    <!-- Template Main JS File -->
-    <script src="../assets/js/main.js"></script>
 </body>
 
 </html>

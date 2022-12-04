@@ -48,7 +48,7 @@ $university = select_with_logo_controller();
 
 <body class="page-portfolio">
     <!-- ======= Header ======= -->
-    <?php include '../header.php';?>
+    <?php include '../Headers/header.php';?>
     <!-- End Header -->
 
     <main id="main">
@@ -118,7 +118,7 @@ $university = select_with_logo_controller();
     <!-- End #main -->
 
     <!-- ======= Footer ======= -->
-    <?php include '../footer.php';?>
+    <?php include '../Headers/footer.php';?>
 
     <!-- End Footer -->
     <!-- End Footer -->

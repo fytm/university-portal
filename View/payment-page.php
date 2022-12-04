@@ -105,7 +105,7 @@ if(isset($_SESSION['user_id'])){
 
 <body class="page-portfolio">
     <!-- ======= Header ======= -->
-    <?php include '../header.php';?>
+    <?php include '../Headers/header.php';?>
     <!-- End Header -->
 
     <main id="main">
@@ -203,7 +203,7 @@ if(isset($_SESSION['user_id'])){
     <!-- End #main -->
 
     <!-- ======= Footer ======= -->
-    <?php include '../footer.php';?>
+    <?php include '../Headers/footer.php';?>
 
     <!-- End Footer -->
     <!-- End Footer -->

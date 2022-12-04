@@ -8,7 +8,6 @@ require("./Settings/core.php");
 if(isset($_GET['id'])){
     $uni_id = $_GET['id'];
     $ip_address = getenv("REMOTE_ADDR");
-    //hardcoded pricec replace with price field from specific course application
 
     if(isset($_SESSION['user_role'])){
         $customerid = $_SESSION['user_id'];

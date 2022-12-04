@@ -41,7 +41,7 @@
 
 <body class="page-index">
     <!-- ======= Header ======= -->
-    <?php include 'header.php';?>
+    <?php include './header.php';?>
 
     <!-- End Header -->
 
@@ -196,7 +196,7 @@
     <!-- End #main -->
 
     <!-- ======= Footer ======= -->
-    <?php include 'footer.php';?>
+    <?php include './footer.php';?>
     <!-- End Footer -->
     <!-- End Footer -->
 

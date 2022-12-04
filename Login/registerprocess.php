@@ -11,10 +11,9 @@ require('../Controllers/customer_controller.php');
     $country = $_POST["country"];
     $city = $_POST['city'];
     $contact = $_POST["contact"];
-    $role = $_POST["user-role"];
 
     // call the add_product_controller function: return true or false
-    $result = add_customer_controller($name, $email, $password, $country, $city, $contact, $role);
+    $result = add_customer_controller($name, $email, $password, $country, $city, $contact);
    
     // var_dump($result);
     // return;

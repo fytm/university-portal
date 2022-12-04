@@ -15,10 +15,10 @@
 
           <nav id="navbar" class="navbar">
             <ul>
-              <li><a href="./index.php" class="active">Home</a></li>
-              <li><a href="./View/universities.php">Universities</a></li>
-              <li><a href="./View/applications.php">Applications</a></li>
-              <li><a href="./Login/logout.php">Logout</a></li>
+              <li><a href="../index.php" class="active">Home</a></li>
+              <li><a href="../View/universities.php">Universities</a></li>
+              <li><a href="../View/applications.php">Applications</a></li>
+              <li><a href="../Login/logout.php">Logout</a></li>
             </ul>
           </nav>
         </div>

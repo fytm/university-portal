@@ -8,7 +8,7 @@ class University extends Connection{
 
     function add_university($name,$email,$mission, $description,$country,$city,$contact){
 
-		return $this->query("insert into university(university_name, university_email, mission, university_description, university_country, university_city, university_contact) values('$name', '$email','$mission', '$description', '$country', '$city','$contact')");
+		return $this->query("INSERT into university(university_name, university_email, mission, university_description, university_country, university_city, university_contact) values('$name', '$email','$mission', '$description', '$country', '$city','$contact')");
 	}
 
     function select_all_universities_plus_logos(){
@@ -18,22 +18,26 @@ class University extends Connection{
 
     function list_universities(){
 		// return array or false
-		return $this->fetch("select * from university");
+		return $this->fetch("SELECT * from university");
 	}
 
     function select_one_university($id){
-		return $this->fetchOne("select * from university where university_id='$id'");
+		return $this->fetchOne("SELECT * from university where university_id='$id'");
 	}
 
     function update_university($name,$email,$mission, $description,$country,$city,$contact, $id){
 
-		return $this->query("update university set university_name = '$name',university_email = '$email', mission = '$mission', university_description = '$description', university_country = '$country', university_city = '$city', university_contact = '$contact' where university_id = '$id' ");
+		return $this->query("UPDATE university set university_name = '$name',university_email = '$email', mission = '$mission', university_description = '$description', university_country = '$country', university_city = '$city', university_contact = '$contact' where university_id = '$id' ");
 	}
 
 	function select_photos($id){
 		//Select first four photos for school only
 		return $this->fetch("SELECT `path` FROM `uni_photos` WHERE uni_id = '$id' AND isLogo = false LIMIT 4 ");
 
+	}
+
+	function delete_university($id){
+		return $this->query("DELETE from university where university_id='$id'");
 	}
 
 	//  function select_one_university_and_photos($id){

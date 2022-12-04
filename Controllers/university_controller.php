@@ -46,3 +46,8 @@ function select_university_photos_controller($id){
 //     $product_instance = new Product();
 //     return $product_instance->check_product($title);
 // }
+
+function delete_university_controller($uni_id){
+    $university_instance = new University();
+    return $university_instance -> delete_university($uni_id);
+}
