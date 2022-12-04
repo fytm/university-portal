@@ -1,32 +1,15 @@
-<?php 
-require("../Controllers/university_controller.php");
-@session_start();
-?>
-
-
 <?php
-// echo "$ip_address";
-if(isset($_SESSION['user_role']) && isset($_SESSION['user_id'])){
+require('../Controllers/university_controller.php');
+// require_once('../Settings/core.php');
+if(isset($_GET['search'])){
+    $selected_universities = search_for_university_controller($_GET['search']);
+}
 
-    // echo "entered\n";
-    if($_SESSION['user_role'] == 1){
-            $customerid = $_SESSION['user_id'];
-            // echo "authorised\n";
-
-            //select all universities
-            $all_universities = list_universities_controller();
-
-        }else{
-            echo "unauthorised";
-        }
-
-    }
-
-        // echo "Hello";
+// var_dump($product);
+// return;
 
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -51,21 +34,18 @@ if(isset($_SESSION['user_role']) && isset($_SESSION['user_id'])){
             rel="stylesheet" />
 
 
-    <!-- Start of bootstrap stylesheets for applications list -->
-        <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-        <!------ Include the above in your HEAD tag ---------->
+        <!-- Start of bootstrap stylesheets for applications list -->
+            <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
+            <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+            <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+            <!------ Include the above in your HEAD tag ---------->
 
-        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" />
-        <!-- <link href="./../assets/css/applications.css" rel="stylesheet" /> -->
-    <!-- End of bootstrap for applications list -->
-
+            <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" />
+            <!-- <link href="./../assets/css/applications.css" rel="stylesheet" /> -->
+        <!-- End of bootstrap for applications list -->
     </head>
 
     <body class="page-portfolio">
-
-
             <!-- ======= Applications View Section ======= -->
             <div class ="applications-container">
                 </br>
@@ -77,14 +57,14 @@ if(isset($_SESSION['user_role']) && isset($_SESSION['user_id'])){
                             <th style="width: 22%">Email</th>
                             <th style="width: 18%">Country</th>
                             <th style="width: 18%">City</th>
-                            <th style="width: 10%"></th>
+                            <th style="width: 10%">Price</th>
                         </tr>
                     </thead>
                     <tbody>
                         
                     <?php 
                         if(isset($_SESSION['user_role'])){
-                            foreach($all_universities as $x){
+                            foreach($selected_universities as $x){
                                 echo "<tr>
                                 <td data-th='University'>
                                 <div class='row'>
@@ -103,14 +83,14 @@ if(isset($_SESSION['user_role']) && isset($_SESSION['user_id'])){
                             <td data-th='Country'>{$x['university_country']}</td>
                             <td data-th='City'>{$x['university_city']}</td>
                             <td class='actions' data-th=''>
-                                <a href ='../Admin/update_university.php?uni_id={$x['university_id']}'>
+                                <a href ='../Action/apply.php?id={$x['university_id']}'>
                                 <button class='btn btn-sm' >
                                     <i class='fas fa-edit' ></i>   
                                 </button>
                                 </a>
                             </td>
                             <td class='actions' data-th=''>
-                                <a href ='../Admin/delete_university.php?uni_id={$x['university_id']}'>
+                                <a href ='../Admin/delete.php?uni_id={$x['university_id']}'>
                                 <button class='btn btn-danger btn-sm' >
                                     <i class='fa fa-trash-o' ></i>   
                                 </button>
@@ -124,11 +104,6 @@ if(isset($_SESSION['user_role']) && isset($_SESSION['user_id'])){
                     </tbody>
                     <tfoot>
                         <tr>
-                            <td>
-                              <a href='../Login/logout.php' class='btn btn-warning'><i class='fa fa-angle-left'></i> Logout</a>
-                            </td>
-                                                      <td colspan='2' class='hidden-xs'></td>
-
                             <td>
                                 <a href='../Admin/add_university.html' class='btn btn-success btn-block'>Add University <i class='fa fa-angle-right'></i></a>
                             </td>

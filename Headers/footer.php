@@ -4,8 +4,8 @@ echo '    <footer id="footer" class="footer">
         <div class="container">
           <div class="row gy-4">
             <div class="col-lg-5 col-md-12 footer-info">
-              <a href="index.html" class="logo d-flex align-items-center">
-                <span>Nova</span>
+              <a href="index.php" class="logo d-flex align-items-center">
+                <span>Afrika Konnect</span>
               </a>
               <p>
                 Cras fermentum odio eu feugiat lide par naso tierra. Justo eget
@@ -25,34 +25,14 @@ echo '    <footer id="footer" class="footer">
             <div class="col-lg-2 col-6 footer-links">
               <h4>Useful Links</h4>
               <ul>
-                <li><i class="bi bi-dash"></i> <a href="#">Home</a></li>
-                <li><i class="bi bi-dash"></i> <a href="#">About us</a></li>
-                <li><i class="bi bi-dash"></i> <a href="#">Services</a></li>
-                <li>
-                  <i class="bi bi-dash"></i> <a href="#">Terms of service</a>
-                </li>
-                <li>
-                  <i class="bi bi-dash"></i> <a href="#">Privacy policy</a>
-                </li>
+                <li><i class="bi bi-dash"></i> <a href="../index.php">Home</a></li>
+                <li><i class="bi bi-dash"></i> <a href="../View/applications.php">Applications</a></li>
+                <li><i class="bi bi-dash"></i> <a href="../View/universities.php">Universities</a></li>
+
               </ul>
             </div>
 
-            <div class="col-lg-2 col-6 footer-links">
-              <h4>Our Services</h4>
-              <ul>
-                <li><i class="bi bi-dash"></i> <a href="#">Web Design</a></li>
-                <li>
-                  <i class="bi bi-dash"></i> <a href="#">Web Development</a>
-                </li>
-                <li>
-                  <i class="bi bi-dash"></i> <a href="#">Product Management</a>
-                </li>
-                <li><i class="bi bi-dash"></i> <a href="#">Marketing</a></li>
-                <li>
-                  <i class="bi bi-dash"></i> <a href="#">Graphic Design</a>
-                </li>
-              </ul>
-            </div>
+
 
             <div
               class="col-lg-3 col-md-12 footer-contact text-center text-md-start"
@@ -60,9 +40,9 @@ echo '    <footer id="footer" class="footer">
               <h4>Contact Us</h4>
               <p>
                 A108 Adam Street <br />
-                New York, NY 535022<br />
-                United States <br /><br />
-                <strong>Phone:</strong> +1 5589 55488 55<br />
+                Accra<br />
+                Ghana <br /><br />
+                <strong>Phone:</strong> +233 55 895 5488<br />
                 <strong>Email:</strong> info@example.com<br />
               </p>
             </div>

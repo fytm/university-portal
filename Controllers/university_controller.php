@@ -51,3 +51,8 @@ function delete_university_controller($uni_id){
     $university_instance = new University();
     return $university_instance -> delete_university($uni_id);
 }
+
+function search_for_university_controller($query){
+    $university_instance = new University();
+    return $university_instance -> search_for_university($query);
+}

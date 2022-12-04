@@ -40,6 +40,10 @@ class University extends Connection{
 		return $this->query("DELETE from university where university_id='$id'");
 	}
 
+	function search_for_university($query){
+		return $this->fetch("select * from university where (`university_name` like '".$query."%') ");
+	}
+
 	//  function select_one_university_and_photos($id){
 	// 	return $this->fetch("select * from university inner join uni_photos on uni_id = university_id where uni_id='$id'  AND isLogo = false LIMIT 4");
 	// }
