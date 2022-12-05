@@ -2,7 +2,7 @@
 require('../Controllers/university_controller.php');
 require_once('../Settings/core.php');
 if(isset($_POST['searchInput'])){
-    $selected_universities = search_for_university_controller($_POST['searchInput']);git
+    $selected_universities = search_for_university_controller($_POST['searchInput']);
 }
 
 
