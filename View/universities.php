@@ -48,7 +48,7 @@ $university = select_with_logo_controller();
 
 <body class="page-portfolio">
     <!-- ======= Header ======= -->
-    <?php include '../header.php';?>
+    <?php include '../Headers/header.php';?>
     <!-- End Header -->
 
     <main id="main">
@@ -118,7 +118,7 @@ $university = select_with_logo_controller();
     <!-- End #main -->
 
     <!-- ======= Footer ======= -->
-    <?php include '../footer.php';?>
+    <?php include '../Headers/footer.php';?>
 
     <!-- End Footer -->
     <!-- End Footer -->
@@ -138,6 +138,14 @@ $university = select_with_logo_controller();
 
     <!-- Template Main JS File -->
     <script src="../assets/js/main.js"></script>
+    
+    <!-- fontawesome icons -->
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.0.13/js/all.js"
+      integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe"
+      crossorigin="anonymous"
+    ></script>
 </body>
 
 </html>

@@ -48,7 +48,7 @@ $path = select_university_photos_controller($_GET['id']);
 <body class="page-portfolio">
 
     <!-- ======= Header ======= -->
-    <?php include "../header.php"; ?>
+    <?php include "../Headers/header.php"; ?>
     <!-- End Header -->
 
     <main id="main">
@@ -141,7 +141,7 @@ $path = select_university_photos_controller($_GET['id']);
     </main><!-- End #main -->
 
     <!-- ======= Footer ======= -->
-    <?php include "../footer.php"?>
+    <?php include "../Headers/footer.php"?>
     <!-- End Footer -->
 
     <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i

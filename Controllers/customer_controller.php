@@ -2,13 +2,23 @@
 
 require('../Classes/customer_class.php');
 
-function add_customer_controller($name, $email, $password, $country, $city, $contact, $role){
+function add_customer_controller($name, $email, $password, $country, $city, $contact){
 
     // echo $email;
     // create an instance of the customer class
     $customer_instance = new Customer();
     // call the method from the class
-    return $customer_instance->add_customer($name, $email, $password, $country, $city, $contact, $role);
+    return $customer_instance->add_customer($name, $email, $password, $country, $city, $contact);
+
+}
+
+function add_admin_controller($name, $email, $password, $country, $city, $contact,$role){
+
+    // echo $email;
+    // create an instance of the customer class
+    $customer_instance = new Customer();
+    // call the method from the class
+    return $customer_instance->add_admin($name, $email, $password, $country, $city, $contact,$role);
 
 }
 

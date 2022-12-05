@@ -2,10 +2,10 @@
 
 require('../Classes/university_class.php');
 
-function add_university_controller($name,$email,$description,$country,$city,$contact){
+function add_university_controller($name,$email,$mission,$description,$country,$city,$contact){
     $university_instance = new University();
     // call the method from the class
-    return $university_instance->add_university($name,$email,$description,$country,$city,$contact);
+    return $university_instance->add_university($name,$email,$mission, $description,$country,$city,$contact);
 }
 
 function list_universities_controller(){
@@ -20,10 +20,10 @@ function select_one_university_controller($id){
     return $university_instance->select_one_university($id);
 }
 
-function update_university_controller($name,$email,$description,$country,$city,$contact, $id){
+function update_university_controller($name,$email,$mission, $description,$country,$city,$contact, $id){
     $university_instance = new University();
     // call the method from the class
-    return $university_instance->update_university($name,$email,$description,$country,$city,$contact, $id);
+    return $university_instance->update_university($name,$email,$mission, $description,$country,$city,$contact, $id);
 }
 
 function select_with_logo_controller(){
@@ -46,3 +46,13 @@ function select_university_photos_controller($id){
 //     $product_instance = new Product();
 //     return $product_instance->check_product($title);
 // }
+
+function delete_university_controller($uni_id){
+    $university_instance = new University();
+    return $university_instance -> delete_university($uni_id);
+}
+
+function search_for_university_controller($query){
+    $university_instance = new University();
+    return $university_instance -> search_for_university($query);
+}

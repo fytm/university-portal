@@ -6,7 +6,13 @@ require_once('../Settings/connection.php');
 class Customer extends Connection{
 
 
-	function add_customer($name, $email, $password, $country, $city, $contact, $role){
+	function add_customer($name, $email, $password, $country, $city, $contact){
+
+		// return true or false
+		return $this->query("insert into customer(customer_name, customer_email, customer_pass, customer_country, customer_city, customer_contact) values('$name', '$email', '$password', '$country', '$city', '$contact')");
+	}
+
+	function add_admin($name, $email, $password, $country, $city, $contact, $role){
 
 		// return true or false
 		return $this->query("insert into customer(customer_name, customer_email, customer_pass, customer_country, customer_city, customer_contact, user_role) values('$name', '$email', '$password', '$country', '$city', '$contact', '$role')");

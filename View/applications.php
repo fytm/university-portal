@@ -85,7 +85,7 @@ $ip_address = getenv("REMOTE_ADDR");
 
 <body class="page-portfolio">
     <!-- ======= Header ======= -->
-    <?php include '../header.php';?>
+    <?php include '../Headers/header.php';?>
     <!-- End Header -->
 
     <main id="main">
@@ -168,8 +168,6 @@ $ip_address = getenv("REMOTE_ADDR");
                               <a href='../View/payment-page.php' class='btn btn-success btn-block'>Checkout <i class='fa fa-angle-right'></i></a>
                           </td>
                       </tr>";
-                    
-
                           ?>
                   </tfoot>
               </table>
@@ -181,7 +179,7 @@ $ip_address = getenv("REMOTE_ADDR");
     <!-- End #main -->
 
     <!-- ======= Footer ======= -->
-    <?php include '../footer.php';?>
+    <?php include '../Headers/footer.php';?>
 
     <!-- End Footer -->
     <!-- End Footer -->
@@ -201,6 +199,7 @@ $ip_address = getenv("REMOTE_ADDR");
 
     <!-- Template Main JS File -->
     <script src="../assets/js/main.js"></script>
+    
 </body>
 
 </html>

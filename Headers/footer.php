@@ -25,13 +25,13 @@ echo '    <footer id="footer" class="footer">
             <div class="col-lg-2 col-6 footer-links">
               <h4>Useful Links</h4>
               <ul>
-                <li><i class="bi bi-dash"></i> <a href="index.php">Home</a></li>
-                <li><i class="bi bi-dash"></i> <a href="./View/applications.php">Applications</a></li>
-                <li><i class="bi bi-dash"></i> <a href="./View/universities/php">Universities</a></li>
+                <li><i class="bi bi-dash"></i> <a href="../index.php">Home</a></li>
+                <li><i class="bi bi-dash"></i> <a href="../View/applications.php">Applications</a></li>
+                <li><i class="bi bi-dash"></i> <a href="../View/universities.php">Universities</a></li>
 
-                </li>
               </ul>
             </div>
+
 
 
             <div
@@ -53,7 +53,7 @@ echo '    <footer id="footer" class="footer">
       <div class="footer-legal">
         <div class="container">
           <div class="copyright">
-            &copy; Copyright <strong><span>Afrika Konnect</span></strong
+            &copy; Copyright <strong><span>Nova</span></strong
             >. All Rights Reserved
           </div>
           <div class="credits">

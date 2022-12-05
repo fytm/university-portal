@@ -15,23 +15,10 @@
 
           <nav id="navbar" class="navbar">
             <ul>
-              <form method="post" action="./View/search.php">
-
-              <div class="input-group">
-                <div class="form-outline">
-                <input name="searchInput" pe="search"  id="form1" class="form-control" />
-                <!-- <label class="form-label" for="form1">Search</label> -->
-                </div>
-              <button type="submit" name="searchbutton" class="btn btn-primary"><i class="fas fa-search"></i></button>
-              </div>
-
-              </form>
-        
-
-              <li><a href="./index.php" class="active">Home</a></li>
-              <li><a href="./View/universities.php">Universities</a></li>
-              <li><a href="./View/applications.php">Applications</a></li>
-              <li><a href="./Login/logout.php">Logout</a></li>
+              <li><a href="../index.php" class="active">Home</a></li>
+              <li><a href="../View/universities.php">Universities</a></li>
+              <li><a href="../View/applications.php">Applications</a></li>
+              <li><a href="../Login/logout.php">Logout</a></li>
             </ul>
           </nav>
         </div>

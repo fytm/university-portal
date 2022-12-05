@@ -2,6 +2,10 @@
 require_once("../Controllers/application_controller.php");
 require_once('../Controllers/customer_controller.php');
 require_once('../Settings/core.php');
+
+include_once "../Settings/dotenvReader.php";
+(new DotEnv('../.env'))->load();
+// echo getenv("PAYSTACK_PUBLIC_KEY");
 ?>
 <?php
 $ip_address = getenv("REMOTE_ADDR");
@@ -105,7 +109,7 @@ if(isset($_SESSION['user_id'])){
 
 <body class="page-portfolio">
     <!-- ======= Header ======= -->
-    <?php include '../header.php';?>
+    <?php include '../Headers/header.php';?>
     <!-- End Header -->
 
     <main id="main">
@@ -203,7 +207,7 @@ if(isset($_SESSION['user_id'])){
     <!-- End #main -->
 
     <!-- ======= Footer ======= -->
-    <?php include '../footer.php';?>
+    <?php include '../Headers/footer.php';?>
 
     <!-- End Footer -->
     <!-- End Footer -->
@@ -236,7 +240,7 @@ if(isset($_SESSION['user_id'])){
 	function payWithPaystack(e) {
 		e.preventDefault();
 		let handler = PaystackPop.setup({
-			key: 'pk_test_214b976264ad8f2bb40862141f0ee79f8ceda31b', // Replace with your public key
+			key: 'pk_live_bd5356607a881f3a0d6843b75d3172b74b9675cd', // Replace with your public key
 			email: document.getElementById("email-address").value,
 			amount: document.getElementById("amount").value * 100,
 			currency:'GHS',

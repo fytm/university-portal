@@ -41,7 +41,7 @@
 
 <body class="page-index">
     <!-- ======= Header ======= -->
-    <?php include 'header.php';?>
+    <?php include './header.php';?>
 
     <!-- End Header -->
 
@@ -196,7 +196,7 @@
     <!-- End #main -->
 
     <!-- ======= Footer ======= -->
-    <?php include 'footer.php';?>
+    <?php include './footer.php';?>
     <!-- End Footer -->
     <!-- End Footer -->
 
@@ -215,6 +215,14 @@
 
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
+
+    <!-- fontawesome icons -->
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.0.13/js/all.js"
+      integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe"
+      crossorigin="anonymous"
+    ></script>
 </body>
 
 </html>
