@@ -3,7 +3,7 @@ require('../Controllers/university_controller.php');
 require_once('../Settings/core.php');
 if(isset($_POST['searchInput'])){
     $selected_universities = search_for_university_controller($_POST['searchInput']);
-    var_dump $selected_universities;
+    var_dump ($selected_universities);
 
 }
 
@@ -66,7 +66,7 @@ if(isset($_POST['searchInput'])){
                     <tbody>
                         
                     <?php 
-                        if(isset($_SESSION['user_role'])){
+                        
                             foreach($selected_universities as $x){
                                 echo "<tr>
                                 <td data-th='University'>
@@ -95,7 +95,7 @@ if(isset($_POST['searchInput'])){
                         </tr>               
                             ";                    
                             }
-                            } ?> 
+                             ?> 
                         
                     </tbody>
                     <tfoot>
