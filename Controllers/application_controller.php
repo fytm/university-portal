@@ -11,6 +11,14 @@ function select_single_application_item_controller($uni_id,$cust_id){
     return $application_instance->select_single_application($uni_id,$cust_id);
 
 }
+function select_single_application_without_customer_id_controller($uni_id,$ip){
+    // echo $email;
+    // create an instance of the customer class
+    $application_instance = new Application();
+    // call the method from the class
+    return $application_instance->select_single_application_without_customer_id($uni_id,$ip);
+
+}
 
 function select_all_applications_controller($cust_id, $ip_address){
     $application_instance = new Application();
