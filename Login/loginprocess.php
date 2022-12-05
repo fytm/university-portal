@@ -21,7 +21,7 @@ require('../Settings/core.php');
         $_SESSION['user_role'] = $results['user_role'];
         $_SESSION['user_id'] = $results['customer_id'];
 
-        header("Location: ../universities.php");
+        header("Location: ../View/universities.php");
     }else{
         
         header("Location: ../Login/login.php?error=Incorrect username or password"); 
@@ -29,41 +29,6 @@ require('../Settings/core.php');
 
 
 }
-
-/* F EDITS////////////////////////////////////////////////////////////////////////
-
-if(isset($_GET['deleteProductID'])){
-
-    $id = $_GET['deleteProductID'];
-
-    // call the function
-    $result = delete_product_controller($id);
-
-    if($result === true) header("Location: ../views/products.php");
-    else echo "deletion failed";
-
-
-}
-
-
-if(isset($_POST["updateProductID"])){
-
-    $id = $_POST['id'];
-    $name = $_POST['name'];
-    $description = $_POST['desc'];
-    $qty = $_POST['qty'];
-
-
-    // Call the function
-    $results = update_product_controller($id, $name, $description, $qty);
-    if($results === true) header("Location: ../views/products.php");
-    else echo "deletion failed";
-}
- */
-
-// updating
-////////////////////////////////////////////////////////////////////////
-
 
 
 ?>

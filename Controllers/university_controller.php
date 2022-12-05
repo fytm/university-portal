@@ -1,6 +1,6 @@
 <?php
 
-require('./Classes/university_class.php');
+require('../Classes/university_class.php');
 
 function add_university_controller($name,$email,$description,$country,$city,$contact){
     $university_instance = new University();

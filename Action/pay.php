@@ -1,15 +1,14 @@
 <?php
-require('./Controllers/application_controller.php');
-require('./Controllers/order_controller.php');
-require('./Settings/core.php'); ?>
+require_once('../Controllers/application_controller.php');
+require_once('../Controllers/order_controller.php');
+require_once('../Settings/core.php'); ?>
 
 
 <?php
-include "dotenvReader.php";
-(new DotEnv(__DIR__ . '/.env'))->load();?>
+include_once "../Settings/dotenvReader.php";
+(new DotEnv('../.env'))->load();?>
 
 <?php 
-
 
 // initialize a client url which we will use to send the reference to the paystack server for verification
 $curl = curl_init();
@@ -24,7 +23,7 @@ CURLOPT_TIMEOUT => 30,
 CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
 CURLOPT_CUSTOMREQUEST => "GET",
 CURLOPT_HTTPHEADER => array(
-    "Authorization: Bearer sk_test_39575994d8f7c54a73ae526623346a7d0c1725dd"),
+    "Authorization: Bearer " . getenv("PAYSTACK_SECRET_KEY")),
     "Cache-Control: no-cache",
 ),
 );
@@ -82,10 +81,10 @@ if(isset($decodedResponse->data->status) && $decodedResponse->data->status === '
     
             if($removefromcart){
                 echo "success";
-                header("Location: ./View/success.html");
+                header("Location: ../View/success.html");
             }else{
                 echo "failure";
-                header("Location: ./View/failure.html");
+                header("Location: ../View/failure.html");
             }
 
     }

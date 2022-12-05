@@ -56,16 +56,16 @@ if(isset($_SESSION['user_id'])){
 	</nav>
 
     <form method="post" id="paymentForm" action="#" style="width: 50%; margin-left: 25%; margin-top:10%">
-    <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
-        <input type="email" id="email-address" required class="form-control"  aria-describedby="emailHelp" value="<?php echo $email   ?>">
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-    </div>
-    <div class="form-group">
-        <label for="exampleInputPassword1">Total Price</label>
-        <input type="text" name="amount" required id="amount" class="form-control" value="<?php echo $_SESSION["total"]  ?>"> 
-    </div>
-    <button type="submit" onclick="payWithPaystack()" class="btn btn-primary">Make Payment</button>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" id="email-address" required class="form-control"  aria-describedby="emailHelp" value="<?php echo $email   ?>">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Total Price</label>
+            <input type="text" name="amount" required id="amount" class="form-control" value="<?php echo $_SESSION["total"]  ?>"> 
+        </div>
+        <button type="submit" onclick="payWithPaystack()" class="btn btn-primary">Make Payment</button>
     </form>
 
 

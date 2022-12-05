@@ -1,5 +1,5 @@
 <?php 
-require("./Controllers/application_controller.php");
+require("../Controllers/application_controller.php");
 ?>
 <?php
 // include "header.php";?>
@@ -41,8 +41,8 @@ $ip_address = getenv("REMOTE_ADDR");
     <meta content="" name="keywords" />
 
     <!-- Favicons -->
-    <link href="assets/img/favicon.png" rel="icon" />
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
+    <link href="../assets/img/favicon.png" rel="icon" />
+    <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -54,15 +54,15 @@ $ip_address = getenv("REMOTE_ADDR");
     
     <!-- Start of bootstrap stylesheets for page template -->
     <!-- Vendor CSS Files -->
-    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
-    <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
-    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
-    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
-    <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet" />
+    <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+    <link href="../assets/vendor/aos/aos.css" rel="stylesheet" />
+    <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
+    <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+    <link href="../assets/vendor/remixicon/remixicon.css" rel="stylesheet" />
 
     <!-- Template Main CSS File -->
-    <link href="assets/css/main.css" rel="stylesheet" />
+    <link href="../assets/css/main.css" rel="stylesheet" />
 
     <!-- =======================================================
   * Template Name: Nova - v1.2.1
@@ -78,24 +78,24 @@ $ip_address = getenv("REMOTE_ADDR");
     <!------ Include the above in your HEAD tag ---------->
 
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" />
-    <!-- <link href="./assets/css/applications.css" rel="stylesheet" /> -->
-    <!-- End of bootstrap for applications list -->
+    <!-- <link href="./../assets/css/applications.css" rel="stylesheet" /> -->
+<!-- End of bootstrap for applications list -->
 
 </head>
 
 <body class="page-portfolio">
     <!-- ======= Header ======= -->
-    <?php include 'header.php';?>
+    <?php include '../header.php';?>
     <!-- End Header -->
 
     <main id="main">
           <!-- ======= Breadcrumbs ======= -->
         <div class="breadcrumbs d-flex align-items-center"
-            style="background-image: url('assets/img/portfolio-header.jpg')">
+            style="background-image: url('../assets/img/portfolio-header.jpg')">
             <div class="container position-relative d-flex flex-column align-items-center">
                 <h2>Applications</h2>
                 <ol>
-                    <li><a href="index.php">Home</a></li>
+                    <li><a href="../View/index.php">Home</a></li>
                     <li>Applications</li>
                 </ol>
             </div>
@@ -142,7 +142,7 @@ $ip_address = getenv("REMOTE_ADDR");
                           <td data-th='City'>{$x['university_city']}</td>
                           <td data-th='Fee' class='text-center'>GH₵{$x['price']}</td>
                           <td class='actions' data-th=''>
-                              <a href ='delete_from_cart.php?id={$x['university_id']}'>
+                              <a href ='../Action/delete_from_cart.php?id={$x['university_id']}'>
                               <button class='btn btn-danger btn-sm' >
                                   <i class='fa fa-trash-o' ></i>   
                               </button>
@@ -160,12 +160,12 @@ $ip_address = getenv("REMOTE_ADDR");
                       </tr>
                       <tr>
                           <td>
-                              <a href='universities.php' class='btn btn-warning'><i class='fa fa-angle-left'></i> Continue Applying</a>
+                              <a href='../View/universities.php' class='btn btn-warning'><i class='fa fa-angle-left'></i> Continue Applying</a>
                           </td>
                           <td colspan='2' class='hidden-xs'></td>
                           <td class='hidden-xs text-center'><strong>Total: GH₵{$total['total']}</strong></td>
                           <td>
-                              <a href='payment-page.php' class='btn btn-success btn-block'>Checkout <i class='fa fa-angle-right'></i></a>
+                              <a href='../View/payment-page.php' class='btn btn-success btn-block'>Checkout <i class='fa fa-angle-right'></i></a>
                           </td>
                       </tr>";
                     
@@ -181,7 +181,7 @@ $ip_address = getenv("REMOTE_ADDR");
     <!-- End #main -->
 
     <!-- ======= Footer ======= -->
-    <?php include 'footer.php';?>
+    <?php include '../footer.php';?>
 
     <!-- End Footer -->
     <!-- End Footer -->
@@ -192,15 +192,15 @@ $ip_address = getenv("REMOTE_ADDR");
     <div id="preloader"></div>
 
     <!-- Vendor JS Files -->
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/vendor/aos/aos.js"></script>
-    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="assets/vendor/php-email-form/validate.js"></script>
+    <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/vendor/aos/aos.js"></script>
+    <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="../assets/vendor/php-email-form/validate.js"></script>
 
     <!-- Template Main JS File -->
-    <script src="assets/js/main.js"></script>
+    <script src="../assets/js/main.js"></script>
 </body>
 
 </html>
