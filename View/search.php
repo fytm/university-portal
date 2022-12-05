@@ -1,8 +1,8 @@
 <?php
 require('../Controllers/university_controller.php');
-// require_once('../Settings/core.php');
-if(isset($_GET['search'])){
-    $selected_universities = search_for_university_controller($_GET['search']);
+require_once('../Settings/core.php');
+if(isset($_POST['searchInput'])){
+    $selected_universities = search_for_university_controller($_POST['searchInput']);
 }
 
 // var_dump($product);
@@ -85,14 +85,7 @@ if(isset($_GET['search'])){
                             <td class='actions' data-th=''>
                                 <a href ='../Action/apply.php?id={$x['university_id']}'>
                                 <button class='btn btn-sm' >
-                                    <i class='fas fa-edit' ></i>   
-                                </button>
-                                </a>
-                            </td>
-                            <td class='actions' data-th=''>
-                                <a href ='../Admin/delete.php?uni_id={$x['university_id']}'>
-                                <button class='btn btn-danger btn-sm' >
-                                    <i class='fa fa-trash-o' ></i>   
+                                    <i class='fas fa-plus' ></i>   
                                 </button>
                                 </a>
                             </td>
@@ -103,11 +96,7 @@ if(isset($_GET['search'])){
                         
                     </tbody>
                     <tfoot>
-                        <tr>
-                            <td>
-                                <a href='../Admin/add_university.html' class='btn btn-success btn-block'>Add University <i class='fa fa-angle-right'></i></a>
-                            </td>
-                        </tr>
+                       
                     </tfoot>
                 </table>
 
@@ -130,6 +119,14 @@ if(isset($_GET['search'])){
         <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
         <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
         <script src="../assets/vendor/php-email-form/validate.js"></script>
+        
+        <!-- fontawesome icons -->
+        <script
+        defer
+        src="https://use.fontawesome.com/releases/v5.0.13/js/all.js"
+        integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe"
+        crossorigin="anonymous"
+        ></script>
 
     </body>
 

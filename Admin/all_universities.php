@@ -112,7 +112,7 @@ if(isset($_SESSION['user_role']) && isset($_SESSION['user_id'])){
                             <td class='actions' data-th=''>
                                 <a href ='../Admin/delete_university.php?uni_id={$x['university_id']}'>
                                 <button class='btn btn-danger btn-sm' >
-                                    <i class='fa fa-trash-o' ></i>   
+                                    <i class='fas fa-trash' ></i>   
                                 </button>
                                 </a>
                             </td>
@@ -155,6 +155,14 @@ if(isset($_SESSION['user_role']) && isset($_SESSION['user_id'])){
         <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
         <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
         <script src="../assets/vendor/php-email-form/validate.js"></script>
+        
+        <!-- fontawesome icons -->
+        <script
+        defer
+        src="https://use.fontawesome.com/releases/v5.0.13/js/all.js"
+        integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe"
+        crossorigin="anonymous"
+        ></script>
 
     </body>
 
