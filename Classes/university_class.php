@@ -41,7 +41,7 @@ class University extends Connection{
 	}
 
 	function search_for_university($query){
-		return $this->fetch('select * from university where (`university_name` like "%'.$query.'%")');
+		return $this->fetch("select * from university where (`university_name` like '%{$query}%')");
 	}
 
 	//  function select_one_university_and_photos($id){
