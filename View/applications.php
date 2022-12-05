@@ -12,6 +12,7 @@ $ip_address = getenv("REMOTE_ADDR");
         // echo "$customer_id";
         $applications_list = select_all_applications_controller($customer_id, $ip_address);
         $total = get_total_controller($customer_id, $ip_address);
+        echo "total".$total['total'];
 
         // echo "$applications_list";
         // contains app_id, cust_id, uni_id, ip_add, price, total
@@ -19,12 +20,13 @@ $ip_address = getenv("REMOTE_ADDR");
     }else{
         $applications_list = select_all_applications_without_customer_id_controller($ip_address); 
         $total = get_total_without_customer_id_controller($ip_address);
+        echo "total2".$total['total'];
 
         // echo "$ip_address";
 
     }
 
-    $_SESSION['total'] = $total;
+    // $_SESSION['total'] = $total;
 
 ?>
 

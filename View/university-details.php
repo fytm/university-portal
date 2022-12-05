@@ -118,7 +118,7 @@ $path = select_university_photos_controller($_GET['id']);
                                 <li><strong>City</strong>: {$university['university_city']}</li>
                                 <li><strong>Email</strong>: <a href=mailto:'{$university['university_email']}'>{$university['university_email']}</a></li>
                                 <li><strong>Phone</strong>: <a href = tel:'+{$university['university_contact']}'>+{$university['university_contact']} </a></li>
-                                <li><strong>Apply</strong>: <a href = ../Action/apply.php?id={$university['university_id']} >Click here</a></li>
+                                <li><strong>Apply</strong>: <a href = ../Action/apply.php?id={$university['university_id']}&price={$university['price']} >Click here</a></li>
 
 
                             </ul>
